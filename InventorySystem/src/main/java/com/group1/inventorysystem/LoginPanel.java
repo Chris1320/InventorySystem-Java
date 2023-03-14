@@ -134,6 +134,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private void employee_log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employee_log_inActionPerformed
         if (this.creds.employeeLogIn(this.username.getText(), this.password.getPassword())) {
             main_frame.setContentPane(new EmployeeDashboard(main_frame).getPanel());
+            main_frame.pack();
             main_frame.validate();
         }
         else {
