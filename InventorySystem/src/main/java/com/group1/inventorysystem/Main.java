@@ -40,7 +40,7 @@ public class Main extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("Inventory System (WIP)");
+        jLabel1.setText("Inventory System ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -49,7 +49,7 @@ public class Main extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(jLabel1)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
