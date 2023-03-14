@@ -1,20 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.group1.inventorysystem;
 
-/**
- *
- * @author USER
- */
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 public class update_employee extends javax.swing.JPanel {
 
-    /**
-     * Creates new form update_employee
-     */
-    public update_employee() {
+    JFrame main_frame;
+
+    public update_employee(JFrame main_frame) {
+        this.main_frame = main_frame;
         initComponents();
+    }
+
+    public JPanel getPanel() {
+        return this;  // Return itself.
     }
 
     /**
@@ -26,38 +25,88 @@ public class update_employee extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        employeeid = new javax.swing.JLabel();
+        employeename = new javax.swing.JLabel();
+        back = new javax.swing.JButton();
+        update = new javax.swing.JButton();
+        empidtxt = new javax.swing.JTextField();
+        empnametxt = new javax.swing.JTextField();
 
-        jLabel1.setText("Employee ID");
+        employeeid.setText("Employee ID");
 
-        jLabel2.setText("Empoyee Name");
+        employeename.setText("Empoyee Name");
+
+        back.setText("BACK ");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
+        update.setText("UPDATE");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addContainerGap(242, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(employeename)
+                            .addComponent(employeeid))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(empidtxt)
+                            .addComponent(empnametxt)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(back)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                        .addComponent(update)))
+                .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1)
-                .addGap(36, 36, 36)
-                .addComponent(jLabel2)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(employeeid)
+                    .addComponent(empidtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(employeename)
+                    .addComponent(empnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(back)
+                    .addComponent(update))
+                .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        main_frame.setContentPane(new admin(main_frame).getPanel());
+        main_frame.validate();
+    }//GEN-LAST:event_backActionPerformed
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        
+    }//GEN-LAST:event_updateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton back;
+    private javax.swing.JTextField empidtxt;
+    private javax.swing.JLabel employeeid;
+    private javax.swing.JLabel employeename;
+    private javax.swing.JTextField empnametxt;
+    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,8 +12,9 @@ import javax.swing.JPanel;
  * @author USER
  */
 public class admin extends javax.swing.JPanel {
-  JFrame main_frame;
-    
+
+    JFrame main_frame;
+
     public admin(JFrame main_frame) {
         initComponents();
         this.main_frame = main_frame;
@@ -22,6 +23,7 @@ public class admin extends javax.swing.JPanel {
     public JPanel getPanel() {
         return this;  // Return itself.
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,14 +36,38 @@ public class admin extends javax.swing.JPanel {
         add = new javax.swing.JButton();
         update = new javax.swing.JButton();
         remove = new javax.swing.JButton();
+        back = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(204, 204, 204));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         add.setText("ADD EMPLOYEES");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
 
         update.setText("UPDATE EMPLOYEE");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
 
         remove.setText("REMOVE EMPLOYEE");
+        remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionPerformed(evt);
+            }
+        });
+
+        back.setText("BACK");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -54,6 +80,10 @@ public class admin extends javax.swing.JPanel {
                     .addComponent(remove)
                     .addComponent(update))
                 .addContainerGap(127, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(back)
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -64,13 +94,37 @@ public class admin extends javax.swing.JPanel {
                 .addComponent(update)
                 .addGap(34, 34, 34)
                 .addComponent(remove)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(back)
+                .addGap(23, 23, 23))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        main_frame.setContentPane(new add_employee(main_frame).getPanel());
+        main_frame.pack();
+        main_frame.validate();
+    }//GEN-LAST:event_addActionPerformed
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        main_frame.setContentPane(new update_employee(main_frame).getPanel());
+        main_frame.validate();
+    }//GEN-LAST:event_updateActionPerformed
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        main_frame.setContentPane(new remove_employee(main_frame).getPanel());
+        main_frame.validate();
+    }//GEN-LAST:event_removeActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        main_frame.setContentPane(new Main (main_frame).getPanel());
+        main_frame.validate();
+    }//GEN-LAST:event_backActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
+    private javax.swing.JButton back;
     private javax.swing.JButton remove;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables

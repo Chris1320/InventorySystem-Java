@@ -21,40 +21,51 @@
               <Component id="back" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="remove" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="employeename" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="empnametxt" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="employeeid" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="empidtxt" min="-2" pref="189" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="employeename" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="employeeid" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="username" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="department" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="59" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="empidtxt" pref="213" max="32767" attributes="0"/>
+                  <Component id="empnametxt" alignment="0" max="32767" attributes="0"/>
+                  <Component id="usertxt" alignment="0" max="32767" attributes="0"/>
+                  <Component id="deptxt" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="employeeid" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="empidtxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="employeename" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="empnametxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="114" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="usertxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="username" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="department" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="deptxt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="119" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="remove" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="back" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -94,6 +105,20 @@
     <Component class="javax.swing.JTextField" name="empidtxt">
     </Component>
     <Component class="javax.swing.JTextField" name="empnametxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="username">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Username"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="department">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Department"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="usertxt">
+    </Component>
+    <Component class="javax.swing.JTextField" name="deptxt">
     </Component>
   </SubComponents>
 </Form>
