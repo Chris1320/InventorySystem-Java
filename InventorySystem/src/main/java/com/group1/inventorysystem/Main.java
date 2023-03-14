@@ -1,7 +1,5 @@
 package com.group1.inventorysystem;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -14,7 +12,7 @@ import javax.swing.JPanel;
  */
 public class Main extends javax.swing.JPanel {
     JFrame main_frame;
-    Connection connection;
+    CredentialsManager creds;
 
     /**
      * @param main_frame The parent JFrame.
@@ -23,13 +21,8 @@ public class Main extends javax.swing.JPanel {
         initComponents();
 
         this.main_frame = main_frame;
-        // Create connection
         try {
-            connection = DriverManager.getConnection(
-                Info.DB_SERVER_URL,
-                Info.DB_CREDENTIALS[0], // username
-                Info.DB_CREDENTIALS[1] // password
-            );
+            this.creds = new CredentialsManager();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Unable to connect to the database server.");
         }
@@ -141,8 +134,13 @@ public class Main extends javax.swing.JPanel {
     }//GEN-LAST:event_employee_log_inActionPerformed
 
     private void admin_log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_log_inActionPerformed
-        main_frame.setContentPane(new admin(main_frame).getPanel());
-        main_frame.validate();
+        if (this.creds.adminLogIn(this.username.getText(), this.password.getPassword())) {
+            main_frame.setContentPane(new admin(main_frame).getPanel());
+            main_frame.validate();
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Invalid admin username/password!");
+        }
     }//GEN-LAST:event_admin_log_inActionPerformed
 
 
