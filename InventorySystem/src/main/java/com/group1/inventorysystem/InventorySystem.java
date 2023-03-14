@@ -1,6 +1,7 @@
 package com.group1.inventorysystem;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * This is the class the includes the main method.
@@ -14,6 +15,12 @@ public class InventorySystem {
      */
     public static void main(String[] args) {
         JFrame main_window = new JFrame(Info.NAME);
+
+        if (Info.OFFLINE_MODE) JOptionPane.showMessageDialog(
+            null,
+            "WARNING: You are running in offline mode. Only use this in development environment."
+        );
+
         main_window.setContentPane(new LoginPanel(main_window).getPanel());
         main_window.setResizable(false);
         main_window.pack();
