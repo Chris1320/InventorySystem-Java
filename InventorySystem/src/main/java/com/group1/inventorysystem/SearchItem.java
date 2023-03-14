@@ -6,23 +6,25 @@ package com.group1.inventorysystem;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 /**
  *
  * @author Mark Kian
  */
-public class update extends javax.swing.JPanel {
+public class SearchItem extends javax.swing.JPanel {
     JFrame main_frame;
 
     /**
-     * Creates new form update
+     * Creates new form search
      */
-    public update(JFrame main_frame) {
+    public SearchItem(JFrame main_frame) {
         initComponents();
         this.main_frame = main_frame;
     }
         public JPanel getPanel() {
         return this;  
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,15 +34,12 @@ public class update extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        update = new javax.swing.JButton();
+        search = new javax.swing.JButton();
 
-        jLabel1.setText("jLabel1");
-
-        update.setText("Update/Remove Item");
-        update.addActionListener(new java.awt.event.ActionListener() {
+        search.setText("Search Item");
+        search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateActionPerformed(evt);
+                searchActionPerformed(evt);
             }
         });
 
@@ -49,28 +48,27 @@ public class update extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(133, Short.MAX_VALUE)
-                .addComponent(update)
-                .addGap(123, 123, 123))
+                .addContainerGap(155, Short.MAX_VALUE)
+                .addComponent(search)
+                .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addComponent(update)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addGap(130, 130, 130)
+                .addComponent(search)
+                .addContainerGap(147, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
-        main_frame.setContentPane(new update(main_frame).getPanel());
+        main_frame.setContentPane(new SearchItem(main_frame).getPanel());
         main_frame.validate();
-    }//GEN-LAST:event_updateActionPerformed
+    }//GEN-LAST:event_searchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton update;
+    private javax.swing.JButton search;
     // End of variables declaration//GEN-END:variables
 }

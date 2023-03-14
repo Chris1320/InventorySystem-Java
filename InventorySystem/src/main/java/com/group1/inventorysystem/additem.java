@@ -10,12 +10,12 @@ import javax.swing.JPanel;
  *
  * @author Mark Kian
  */
-public class additem extends javax.swing.JPanel {
+public class AddItem extends javax.swing.JPanel {
     JFrame main_frame;
     /**
      * Creates new form additem
      */
-    public additem(JFrame main_frame) {
+    public AddItem(JFrame main_frame) {
         initComponents();
         this.main_frame=main_frame;
     }
@@ -61,7 +61,7 @@ public class additem extends javax.swing.JPanel {
 
     private void additemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additemActionPerformed
         // TODO add your handling code here:
-        main_frame.setContentPane(new additem(main_frame).getPanel());
+        main_frame.setContentPane(new AddItem(main_frame).getPanel());
         main_frame.validate();
     }//GEN-LAST:event_additemActionPerformed
 

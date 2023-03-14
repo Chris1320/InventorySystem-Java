@@ -10,14 +10,14 @@ import javax.swing.JPanel;
  *
  * @author Chris
  */
-public class Main extends javax.swing.JPanel {
+public class LoginPanel extends javax.swing.JPanel {
     JFrame main_frame;
     CredentialsManager creds;
 
     /**
      * @param main_frame The parent JFrame.
      */
-    public Main(JFrame main_frame) {
+    public LoginPanel(JFrame main_frame) {
         initComponents();
 
         this.main_frame = main_frame;
@@ -129,13 +129,13 @@ public class Main extends javax.swing.JPanel {
     }//GEN-LAST:event_passwordActionPerformed
 
     private void employee_log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employee_log_inActionPerformed
-        main_frame.setContentPane(new employee(main_frame).getPanel());
+        main_frame.setContentPane(new EmployeeDashboard(main_frame).getPanel());
         main_frame.validate();
     }//GEN-LAST:event_employee_log_inActionPerformed
 
     private void admin_log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_log_inActionPerformed
         if (this.creds.adminLogIn(this.username.getText(), this.password.getPassword())) {
-            main_frame.setContentPane(new admin(main_frame).getPanel());
+            main_frame.setContentPane(new AdminDashboard(main_frame).getPanel());
             main_frame.validate();
         }
         else {

@@ -14,7 +14,7 @@ public class InventorySystem {
      */
     public static void main(String[] args) {
         JFrame main_window = new JFrame(Info.NAME);
-        main_window.setContentPane(new Main(main_window).getPanel());
+        main_window.setContentPane(new LoginPanel(main_window).getPanel());
         main_window.setResizable(false);
         main_window.pack();
         main_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
