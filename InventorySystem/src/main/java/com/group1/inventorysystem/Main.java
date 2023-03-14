@@ -122,7 +122,8 @@ public class Main extends javax.swing.JPanel {
     }//GEN-LAST:event_passwordActionPerformed
 
     private void employee_log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employee_log_inActionPerformed
-        JOptionPane.showMessageDialog(this, "Employee Log In (WIP)");
+        main_frame.setContentPane(new employee(main_frame).getPanel());
+        main_frame.validate();
     }//GEN-LAST:event_employee_log_inActionPerformed
 
     private void admin_log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_log_inActionPerformed
