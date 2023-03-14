@@ -51,7 +51,7 @@ public class employee extends javax.swing.JPanel {
             }
         });
 
-        search.setText("Serach Item");
+        search.setText("Search Item");
         search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchActionPerformed(evt);

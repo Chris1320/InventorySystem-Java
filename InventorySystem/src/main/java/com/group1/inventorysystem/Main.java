@@ -1,30 +1,44 @@
 package com.group1.inventorysystem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
  * This is the main panel.
- * 
+ *
  * @author Chris
  */
 public class Main extends javax.swing.JPanel {
     JFrame main_frame;
+    Connection connection;
 
     /**
      * @param main_frame The parent JFrame.
      */
     public Main(JFrame main_frame) {
         initComponents();
-        
+
         this.main_frame = main_frame;
+        // Create connection
+        try {
+            connection = DriverManager.getConnection(
+                Info.DB_SERVER_URL,
+                Info.DB_CREDENTIALS[0], // username
+                Info.DB_CREDENTIALS[1] // password
+            );
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Unable to connect to the database server.");
+        }
     }
 
     /**
      * Return the panel.
-     * 
-     * @return 
+     *
+     * @return
      */
     public JPanel getPanel() {
         return this;  // Return itself.
