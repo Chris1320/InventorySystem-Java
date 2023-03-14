@@ -130,6 +130,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
     private void employee_log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employee_log_inActionPerformed
         main_frame.setContentPane(new EmployeeDashboard(main_frame).getPanel());
+        main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_employee_log_inActionPerformed
 

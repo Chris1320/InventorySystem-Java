@@ -34,8 +34,8 @@ public class EmployeeDashboard extends javax.swing.JPanel {
     private void initComponents() {
 
         additem = new javax.swing.JButton();
-        update = new javax.swing.JButton();
         search = new javax.swing.JButton();
+        back = new javax.swing.JButton();
 
         additem.setText("Add Item");
         additem.addActionListener(new java.awt.event.ActionListener() {
@@ -44,17 +44,17 @@ public class EmployeeDashboard extends javax.swing.JPanel {
             }
         });
 
-        update.setText("Update/Remove Item");
-        update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateActionPerformed(evt);
-            }
-        });
-
         search.setText("Search Item");
         search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchActionPerformed(evt);
+            }
+        });
+
+        back.setText("BACK");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
             }
         });
 
@@ -66,20 +66,23 @@ public class EmployeeDashboard extends javax.swing.JPanel {
                 .addGap(127, 127, 127)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(update)
                     .addComponent(additem, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(129, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(back)
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addGap(96, 96, 96)
                 .addComponent(additem)
-                .addGap(29, 29, 29)
-                .addComponent(update)
-                .addGap(36, 36, 36)
+                .addGap(37, 37, 37)
                 .addComponent(search)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(back)
+                .addGap(25, 25, 25))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -89,22 +92,22 @@ public class EmployeeDashboard extends javax.swing.JPanel {
         main_frame.validate();
     }//GEN-LAST:event_additemActionPerformed
 
-    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        // TODO add your handling code here:
-        main_frame.setContentPane(new ItemUpdate(main_frame).getPanel());
-        main_frame.validate();
-    }//GEN-LAST:event_updateActionPerformed
-
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
         main_frame.setContentPane(new ItemSearch(main_frame).getPanel());
         main_frame.validate();
     }//GEN-LAST:event_searchActionPerformed
 
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        main_frame.setContentPane(new LoginPanel (main_frame).getPanel());
+        main_frame.pack();
+        main_frame.validate();
+    }//GEN-LAST:event_backActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton additem;
+    private javax.swing.JButton back;
     private javax.swing.JButton search;
-    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
