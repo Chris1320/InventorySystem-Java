@@ -44,6 +44,6 @@ public class CredentialsManager {
      * @return true if the login is successful. Otherwise, false.
      */
     public boolean adminLogIn(String username, char[] password) {
-        return false; // TODO: Implement
+        return true; // TODO: Implement
     }
 }
