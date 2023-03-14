@@ -18,11 +18,11 @@ public class CredentialsManager {
      */
     public CredentialsManager() throws SQLException {
         // Establish connection to the database.
-        this.connection = DriverManager.getConnection(
-                Info.DB_SERVER_URL,
-                Info.DB_CREDENTIALS[0], // dbusername
-                Info.DB_CREDENTIALS[1] // dbpassword
-        );
+//        this.connection = DriverManager.getConnection(
+//                Info.DB_SERVER_URL,
+//                Info.DB_CREDENTIALS[0], // dbusername
+//                Info.DB_CREDENTIALS[1] // dbpassword
+//        );
     }
 
     /**
