@@ -21,11 +21,11 @@ public class Main extends javax.swing.JPanel {
         initComponents();
 
         this.main_frame = main_frame;
-//        try {
-//            this.creds = new CredentialsManager();
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(this, "Unable to connect to the database server.");
-//        }
+        try {
+            this.creds = new CredentialsManager();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Unable to connect to the database server.");
+        }
     }
 
     /**
