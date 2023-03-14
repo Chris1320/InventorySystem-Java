@@ -11,11 +11,11 @@ import javax.swing.JPanel;
  *
  * @author USER
  */
-public class AdminDashboard extends javax.swing.JPanel {
+public class DashboardAdmin extends javax.swing.JPanel {
 
     JFrame main_frame;
 
-    public AdminDashboard(JFrame main_frame) {
+    public DashboardAdmin(JFrame main_frame) {
         initComponents();
         this.main_frame = main_frame;
     }
@@ -101,18 +101,18 @@ public class AdminDashboard extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        main_frame.setContentPane(new AddEmployee(main_frame).getPanel());
+        main_frame.setContentPane(new EmployeeAdd(main_frame).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_addActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        main_frame.setContentPane(new UpdateEmployee(main_frame).getPanel());
+        main_frame.setContentPane(new EmployeeUpdate(main_frame).getPanel());
         main_frame.validate();
     }//GEN-LAST:event_updateActionPerformed
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        main_frame.setContentPane(new RemoveEmployee(main_frame).getPanel());
+        main_frame.setContentPane(new EmployeeRemove(main_frame).getPanel());
         main_frame.validate();
     }//GEN-LAST:event_removeActionPerformed
 

@@ -11,10 +11,10 @@ import javax.swing.JPanel;
  *
  * @author USER
  */
-public class AddEmployee extends javax.swing.JPanel {
+public class EmployeeAdd extends javax.swing.JPanel {
   JFrame main_frame;
     
-    public AddEmployee(  JFrame main_frame ) {
+    public EmployeeAdd(  JFrame main_frame ) {
         initComponents();
         this.main_frame = main_frame;
     }
@@ -161,7 +161,7 @@ public class AddEmployee extends javax.swing.JPanel {
     }//GEN-LAST:event_addActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        main_frame.setContentPane(new AdminDashboard(main_frame).getPanel());
+        main_frame.setContentPane(new DashboardAdmin(main_frame).getPanel());
         main_frame.validate();
     }//GEN-LAST:event_backActionPerformed
 

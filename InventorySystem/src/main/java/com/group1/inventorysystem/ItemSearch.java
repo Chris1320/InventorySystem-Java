@@ -6,20 +6,22 @@ package com.group1.inventorysystem;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 /**
  *
  * @author Mark Kian
  */
-public class AddItem extends javax.swing.JPanel {
+public class ItemSearch extends javax.swing.JPanel {
     JFrame main_frame;
+
     /**
-     * Creates new form additem
+     * Creates new form search
      */
-    public AddItem(JFrame main_frame) {
+    public ItemSearch(JFrame main_frame) {
         initComponents();
-        this.main_frame=main_frame;
+        this.main_frame = main_frame;
     }
-     public JPanel getPanel() {
+        public JPanel getPanel() {
         return this;  
     }
 
@@ -32,12 +34,12 @@ public class AddItem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        additem = new javax.swing.JButton();
+        search = new javax.swing.JButton();
 
-        additem.setText("Add Item");
-        additem.addActionListener(new java.awt.event.ActionListener() {
+        search.setText("Search Item");
+        search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                additemActionPerformed(evt);
+                searchActionPerformed(evt);
             }
         });
 
@@ -46,27 +48,27 @@ public class AddItem extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(159, Short.MAX_VALUE)
-                .addComponent(additem)
-                .addGap(161, 161, 161))
+                .addContainerGap(155, Short.MAX_VALUE)
+                .addComponent(search)
+                .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(additem)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addGap(130, 130, 130)
+                .addComponent(search)
+                .addContainerGap(147, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void additemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additemActionPerformed
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
-        main_frame.setContentPane(new AddItem(main_frame).getPanel());
+        main_frame.setContentPane(new ItemSearch(main_frame).getPanel());
         main_frame.validate();
-    }//GEN-LAST:event_additemActionPerformed
+    }//GEN-LAST:event_searchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton additem;
+    private javax.swing.JButton search;
     // End of variables declaration//GEN-END:variables
 }

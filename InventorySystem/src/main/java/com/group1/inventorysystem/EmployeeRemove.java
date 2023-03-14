@@ -3,11 +3,11 @@ package com.group1.inventorysystem;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class RemoveEmployee extends javax.swing.JPanel {
+public class EmployeeRemove extends javax.swing.JPanel {
 
     JFrame main_frame;
 
-    public RemoveEmployee(JFrame main_frame) {
+    public EmployeeRemove(JFrame main_frame) {
         this.main_frame = main_frame;
         initComponents();
     }
@@ -110,7 +110,7 @@ public class RemoveEmployee extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        main_frame.setContentPane(new AdminDashboard(main_frame).getPanel());
+        main_frame.setContentPane(new DashboardAdmin(main_frame).getPanel());
         main_frame.validate();
     }//GEN-LAST:event_backActionPerformed
 
