@@ -85,19 +85,19 @@ public class employee extends javax.swing.JPanel {
 
     private void additemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additemActionPerformed
         // TODO add your handling code here:
-        main_frame.setContentPane(new employee(main_frame).getPanel());
+        main_frame.setContentPane(new additem(main_frame).getPanel());
         main_frame.validate();
     }//GEN-LAST:event_additemActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         // TODO add your handling code here:
-        main_frame.setContentPane(new employee(main_frame).getPanel());
+        main_frame.setContentPane(new update(main_frame).getPanel());
         main_frame.validate();
     }//GEN-LAST:event_updateActionPerformed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
-        main_frame.setContentPane(new employee(main_frame).getPanel());
+        main_frame.setContentPane(new search(main_frame).getPanel());
         main_frame.validate();
     }//GEN-LAST:event_searchActionPerformed
 
