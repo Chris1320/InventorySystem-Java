@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.group1.inventorysystem;
 
 import java.sql.Connection;
@@ -31,11 +27,7 @@ public class ItemSearch extends javax.swing.JPanel {
         this.main_frame = main_frame;
 
         try {
-            this.connection = DriverManager.getConnection(
-                    Info.DB_SERVER_URL,
-                    Info.DB_CREDENTIALS[0], // dbusername
-                    Info.DB_CREDENTIALS[1] // dbpassword
-            );
+            this.connection = SQLHandler.getConnection();
         } catch (SQLException | NullPointerException ex) {
             JOptionPane.showMessageDialog(main_frame, "Error: " + ex);
         }
@@ -216,11 +208,7 @@ public class ItemSearch extends javax.swing.JPanel {
     private void additemActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         try {
-            this.connection = DriverManager.getConnection(
-                    Info.DB_SERVER_URL,
-                    Info.DB_CREDENTIALS[0], // dbusername
-                    Info.DB_CREDENTIALS[1] // dbpassword
-            );
+            this.connection = SQLHandler.getConnection();
             Statement get_username_statement = connection.createStatement();
             get_username_statement.execute(
                     String.format(

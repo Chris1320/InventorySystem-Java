@@ -254,9 +254,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             return;
         }
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            // establish connection 
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/InventorySystem", "root", "");
+            Connection con = SQLHandler.getConnection();
             Statement statement = con.createStatement();
             
             statement.executeUpdate (
@@ -270,7 +268,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Employee updated successfully!!");
             Clear();
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
 
         }
@@ -297,9 +295,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         try {
             String str = empidtxt.getText();
-            Class.forName("com.mysql.jdbc.Driver");
-            // establish connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/InventorySystem", "root", "");
+            Connection con = SQLHandler.getConnection();
             PreparedStatement st = con.prepareStatement("select * from employees where Employee_ID=?");
             st.setString(1, str);
             //Excuting Query
@@ -327,7 +323,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "Record not Found");
             } //end of iiner if
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_searchActionPerformed

@@ -1,7 +1,6 @@
 package com.group1.inventorysystem;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +11,6 @@ import java.sql.SQLException;
  * @author Chris
  */
 public class CredentialsManager {
-
     Connection connection;
 
     /**
@@ -21,11 +19,7 @@ public class CredentialsManager {
     public CredentialsManager() throws SQLException {
         if (!Info.OFFLINE_MODE) {
             // Establish connection to the database.
-            this.connection = DriverManager.getConnection(
-                    Info.DB_SERVER_URL,
-                    Info.DB_CREDENTIALS[0], // dbusername
-                    Info.DB_CREDENTIALS[1] // dbpassword
-            );
+            this.connection = SQLHandler.getConnection();
         }
     }
 
@@ -91,7 +85,7 @@ public class CredentialsManager {
         String user_pass = get_username_statement_result.getString(1);
 
         // If password matched, login process is successful.
-        return user_pass.equals(this.convertPasswordToString(password));
+        return user_pass.equals(CredentialsManager.convertPasswordToString(password));
     }
 
     /**

@@ -24,12 +24,8 @@ public class ItemAdd extends javax.swing.JPanel {
 
         this.main_frame = main_frame;
         try {
-            this.connection = DriverManager.getConnection(
-                    Info.DB_SERVER_URL,
-                    Info.DB_CREDENTIALS[0], // dbusername
-                    Info.DB_CREDENTIALS[1] // dbpassword
-            );
-        } catch (SQLException | NullPointerException ex) {
+            this.connection = SQLHandler.getConnection();
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(main_frame, "Error: " + ex);
         }
     }
@@ -160,11 +156,7 @@ public class ItemAdd extends javax.swing.JPanel {
     private void additemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additemActionPerformed
         // TODO add your handling code here:
         try {
-            this.connection = DriverManager.getConnection(
-                    Info.DB_SERVER_URL,
-                    Info.DB_CREDENTIALS[0], // dbusername
-                    Info.DB_CREDENTIALS[1] // dbpassword
-            );
+            this.connection = SQLHandler.getConnection();
             Statement get_username_statement = connection.createStatement();
             get_username_statement.execute(
             String.format(
@@ -175,7 +167,7 @@ public class ItemAdd extends javax.swing.JPanel {
                             stockstxt.getText(),
                             pricetxt.getText()
                     ));
-        } catch (SQLException | NullPointerException ex) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(main_frame, "Error: " + ex);
         }
     }//GEN-LAST:event_additemActionPerformed

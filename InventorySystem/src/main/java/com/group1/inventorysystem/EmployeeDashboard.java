@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.group1.inventorysystem;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 /**
- *
  * @author Mark Kian
  */
 public class EmployeeDashboard extends javax.swing.JPanel {
