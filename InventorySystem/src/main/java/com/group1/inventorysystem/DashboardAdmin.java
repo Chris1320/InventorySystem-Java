@@ -97,6 +97,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         main_frame.setContentPane(new EmployeeUpdate(main_frame).getPanel());
+        main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_updateActionPerformed
 

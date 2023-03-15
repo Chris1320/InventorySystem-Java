@@ -80,6 +80,11 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         search.setText("SEARCH EMPLOYEE");
 
         edit.setText("EDIT EMPLOYEE");
+        edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editActionPerformed(evt);
+            }
+        });
 
         remove.setText("REMOVE EMPLOYEE");
         remove.addActionListener(new java.awt.event.ActionListener() {
@@ -130,9 +135,9 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                         .addComponent(edit)
                         .addGap(31, 31, 31)
                         .addComponent(remove)
-                        .addGap(50, 50, 50)
+                        .addGap(40, 40, 40)
                         .addComponent(update)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(search)
@@ -196,6 +201,10 @@ public class EmployeeUpdate extends javax.swing.JPanel {
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_removeActionPerformed
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
