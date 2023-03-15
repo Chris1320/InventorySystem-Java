@@ -154,7 +154,7 @@ public class ItemAdd extends javax.swing.JPanel {
     }//GEN-LAST:event_backActionPerformed
 
     private void additemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additemActionPerformed
-        // TODO add your handling code here:
+       
         try {
             this.connection = SQLHandler.getConnection();
             Statement get_username_statement = connection.createStatement();
