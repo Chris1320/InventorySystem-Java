@@ -93,6 +93,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         main_frame.setContentPane(new DashboardAdmin(main_frame).getPanel());
+        main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_backActionPerformed
 
