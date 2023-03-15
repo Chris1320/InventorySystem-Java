@@ -112,18 +112,19 @@ public class ItemSearch extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(stocks, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addComponent(back)))
-                    .addComponent(name)
-                    .addComponent(itemcode)
-                    .addComponent(description)
-                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(back))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(name)
+                            .addComponent(itemcode)
+                            .addComponent(description)
+                            .addComponent(stocks))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(itemcodetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,7 +166,7 @@ public class ItemSearch extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(price))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(search)
                 .addGap(32, 32, 32)
@@ -236,6 +237,37 @@ public class ItemSearch extends javax.swing.JPanel {
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
+        
+        String itemcode = itemcodetxt.getText();
+        String name = nametxt.getText();
+        String description = descriptiontxt.getText();
+        String stocks = stockstxt.getText();
+        String price = pricetxt.getText();
+
+        if (!password.equals(confirmpassword)) {
+            JOptionPane.showMessageDialog(main_frame, "Password mismatch");
+            return;
+        }
+        try {
+            Connection con = SQLHandler.getConnection();
+            Statement statement = con.createStatement();
+            
+            statement.executeUpdate (
+                String.format(
+                    "UPDATE `employees` SET `Item_code`='%s',"
+                    + "`Name`='%s',`Description`='%s',`Stocks,'Price'`='%s',"
+                    + "`username`='%s',`password`='%s',`Department`='%s'",
+                    itemcode, name,description,stocks,price));
+
+           
+            JOptionPane.showMessageDialog(null, "Employee updated successfully!!");
+            Clear();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+
+        }
+    }                              
         main_frame.setContentPane(new EmployeeDashboard(main_frame).getPanel());
         main_frame.pack();
         main_frame.validate();
