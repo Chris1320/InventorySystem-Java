@@ -35,7 +35,6 @@ public class DashboardAdmin extends javax.swing.JPanel {
 
         add = new javax.swing.JButton();
         update = new javax.swing.JButton();
-        remove = new javax.swing.JButton();
         back = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
@@ -55,13 +54,6 @@ public class DashboardAdmin extends javax.swing.JPanel {
             }
         });
 
-        remove.setText("REMOVE EMPLOYEE");
-        remove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeActionPerformed(evt);
-            }
-        });
-
         back.setText("BACK");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +69,6 @@ public class DashboardAdmin extends javax.swing.JPanel {
                 .addGap(128, 128, 128)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(remove)
                     .addComponent(update))
                 .addContainerGap(127, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -88,13 +79,11 @@ public class DashboardAdmin extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addContainerGap(81, Short.MAX_VALUE)
                 .addComponent(add)
-                .addGap(30, 30, 30)
+                .addGap(65, 65, 65)
                 .addComponent(update)
-                .addGap(34, 34, 34)
-                .addComponent(remove)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
                 .addComponent(back)
                 .addGap(23, 23, 23))
         );
@@ -111,11 +100,6 @@ public class DashboardAdmin extends javax.swing.JPanel {
         main_frame.validate();
     }//GEN-LAST:event_updateActionPerformed
 
-    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        main_frame.setContentPane(new EmployeeRemove(main_frame).getPanel());
-        main_frame.validate();
-    }//GEN-LAST:event_removeActionPerformed
-
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         main_frame.setContentPane(new LoginPanel (main_frame).getPanel());
         main_frame.pack();
@@ -126,7 +110,6 @@ public class DashboardAdmin extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JButton back;
-    private javax.swing.JButton remove;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
