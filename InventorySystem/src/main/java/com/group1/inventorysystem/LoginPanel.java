@@ -45,12 +45,13 @@ public class LoginPanel extends javax.swing.JPanel {
     
     public void logIn() {
         try {
-            if (this.creds.adminLogIn(this.username.getText(), this.password.getPassword())) {
-                main_frame.setContentPane(new DashboardAdmin(main_frame).getPanel());
+            if (this.creds.employeeLogIn(this.username.getText(), this.password.getPassword())) {
+                main_frame.setContentPane(new ItemDashboard(main_frame).getPanel());
+                main_frame.pack();
                 main_frame.validate();
             }
             else {
-                JOptionPane.showMessageDialog(this, "Invalid admin username/password!");
+                JOptionPane.showMessageDialog(main_frame, "Invalid employee username/password!");
             }
         }
         catch (SQLException | NullPointerException ex) {
@@ -162,23 +163,22 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_passwordActionPerformed
 
     private void employee_log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employee_log_inActionPerformed
-        try {
-            if (this.creds.employeeLogIn(this.username.getText(), this.password.getPassword())) {
-                main_frame.setContentPane(new ItemDashboard(main_frame).getPanel());
-                main_frame.pack();
-                main_frame.validate();
-            }
-            else {
-                JOptionPane.showMessageDialog(this, "Invalid employee username/password!");
-            }
-        }
-        catch (SQLException | NullPointerException ex) {
-            JOptionPane.showMessageDialog(main_frame, "Unable to log in.");
-        }
+        logIn();
     }//GEN-LAST:event_employee_log_inActionPerformed
 
     private void admin_log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_log_inActionPerformed
-        logIn();
+        try {
+            if (this.creds.adminLogIn(this.username.getText(), this.password.getPassword())) {
+                main_frame.setContentPane(new DashboardAdmin(main_frame).getPanel());
+                main_frame.validate();
+            }
+            else {
+                JOptionPane.showMessageDialog(main_frame, "Invalid admin username/password!");
+            }
+        }
+        catch (SQLException | NullPointerException ex) {
+            JOptionPane.showMessageDialog(main_frame, "Unable to log in: " + ex);
+        }
     }//GEN-LAST:event_admin_log_inActionPerformed
 
     private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed

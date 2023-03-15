@@ -154,19 +154,19 @@ public class ItemAdd extends javax.swing.JPanel {
     }//GEN-LAST:event_backActionPerformed
 
     private void additemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additemActionPerformed
-       
         try {
             this.connection = SQLHandler.getConnection();
             Statement get_username_statement = connection.createStatement();
             get_username_statement.execute(
             String.format(
-                            "INSERT INTO items VALUES ('%s','%s','%s','%s','%s')",
-                            itemcodetxt.getText(),
-                            itemnametxt.getText(),
-                            descriptiontxt.getText(),
-                            stockstxt.getText(),
-                            pricetxt.getText()
-                    ));
+                "INSERT INTO items VALUES ('%s','%s','%s','%s','%s')",
+                itemcodetxt.getText(),
+                itemnametxt.getText(),
+                descriptiontxt.getText(),
+                stockstxt.getText(),
+                pricetxt.getText()
+            ));
+            JOptionPane.showMessageDialog(main_frame, "Item added successfully.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(main_frame, "Error: " + ex);
         }
