@@ -13,8 +13,8 @@ public class Info {
     final public static boolean OFFLINE_MODE = false;
 
     // Database information
-    final public static String DB_SERVER_HOST = "0.tcp.ap.ngrok.io";
-    final public static int DB_SERVER_PORT = 18171;
+    final public static String DB_SERVER_HOST = "localhost";
+    final public static int DB_SERVER_PORT = 3306;
     final public static String[] DB_CREDENTIALS = {"root", ""};
     final public static String DB_NAME = "InventorySystem";
     final public static String DB_SERVER_URL = String.format(
