@@ -101,7 +101,7 @@ public class CredentialsManager {
      * @param password The array of characters to convert into string.
      * @return The string version of the password.
      */
-    public String convertPasswordToString(char[] password) {
+    public static String convertPasswordToString(char[] password) {
         StringBuilder result = new StringBuilder();
         for (char c : password) {
             result.append(c);

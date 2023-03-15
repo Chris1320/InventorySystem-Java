@@ -25,6 +25,17 @@ public class EmployeeAdd extends javax.swing.JPanel {
         this.main_frame = main_frame;
     }
 
+    public void Clear() {
+        empidtxt.setText("");
+        fnametxt.setText("");
+        mnametxt.setText("");
+        lnametxt.setText("");
+        usernametxt.setText("");
+        passtxt.setText("");
+        confirmpasstxt.setText("");
+        deptxt.setText("");
+    }
+
     public JPanel getPanel() {
         return this;  // Return itself.
     }
@@ -185,9 +196,13 @@ public class EmployeeAdd extends javax.swing.JPanel {
         String lastname = lnametxt.getText();
         String username = usernametxt.getText();
         String password = passtxt.getText();
-        String confirmpass = confirmpasstxt.getText();
+        String confirmpassword = confirmpasstxt.getText();
         String department = deptxt.getText();
 
+        if (!password.equals(confirmpassword)) {
+            JOptionPane.showMessageDialog(main_frame, "Password mismatch");
+            return;
+        }
         try {
             Class.forName("com.mysql.jdbc.Driver");
             // establish connection 
@@ -195,9 +210,9 @@ public class EmployeeAdd extends javax.swing.JPanel {
             Statement statement = con.createStatement();
 
             statement.executeUpdate("INSERT INTO employees VALUES('" + employeeID + "', '" + firstname + "', '" + middlename + "','"
-                    + lastname + "','" + username + "', '" + password + "','" + confirmpass + "','" + department + "');");
+                    + lastname + "','" + username + "', '" + password + "','" + department + "');");
             JOptionPane.showMessageDialog(null, "Employee added successfully!!");
-            // Clear();
+            Clear();
 
         } catch (SQLException | ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, e);
