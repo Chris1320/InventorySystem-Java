@@ -25,16 +25,25 @@ public class EmployeeUpdate extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        employeeid = new javax.swing.JLabel();
-        employeename = new javax.swing.JLabel();
         back = new javax.swing.JButton();
         update = new javax.swing.JButton();
+        employeename = new javax.swing.JLabel();
+        mnametxt = new javax.swing.JTextField();
+        department = new javax.swing.JLabel();
+        lnametxt = new javax.swing.JTextField();
+        employeeid = new javax.swing.JLabel();
+        passtxt = new javax.swing.JPasswordField();
+        password = new javax.swing.JLabel();
+        confirmpasstxt = new javax.swing.JPasswordField();
         empidtxt = new javax.swing.JTextField();
-        empnametxt = new javax.swing.JTextField();
-
-        employeeid.setText("Employee ID");
-
-        employeename.setText("Empoyee Name");
+        fnametxt = new javax.swing.JTextField();
+        usernametxt = new javax.swing.JTextField();
+        deptxt = new javax.swing.JTextField();
+        confirmpassword = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
+        search = new javax.swing.JButton();
+        edit = new javax.swing.JButton();
+        remove = new javax.swing.JButton();
 
         back.setText("BACK ");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -50,27 +59,84 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             }
         });
 
+        employeename.setText("Employee Name");
+
+        department.setText("Department");
+
+        employeeid.setText("Employee ID");
+
+        password.setText("Password");
+
+        usernametxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernametxtActionPerformed(evt);
+            }
+        });
+
+        confirmpassword.setText("Confirm Password");
+
+        username.setText("Username");
+
+        search.setText("SEARCH EMPLOYEE");
+
+        edit.setText("EDIT EMPLOYEE");
+
+        remove.setText("REMOVE EMPLOYEE");
+        remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(employeename)
-                            .addComponent(employeeid))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(empidtxt)
-                            .addComponent(empnametxt)))
+                            .addComponent(confirmpassword)
+                            .addComponent(password)
+                            .addComponent(department)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(username)
+                            .addComponent(employeename)
+                            .addComponent(employeeid)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
                         .addComponent(back)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                        .addGap(34, 34, 34)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(fnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(mnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(empidtxt)
+                            .addComponent(usernametxt)
+                            .addComponent(passtxt)
+                            .addComponent(confirmpasstxt)
+                            .addComponent(deptxt)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(edit)
+                        .addGap(31, 31, 31)
+                        .addComponent(remove)
+                        .addGap(50, 50, 50)
                         .addComponent(update)))
-                .addGap(59, 59, 59))
+                .addContainerGap(56, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(search)
+                .addGap(239, 239, 239))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,14 +145,36 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(employeeid)
                     .addComponent(empidtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(employeename)
-                    .addComponent(empnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                    .addComponent(fnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(username)
+                    .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(password)
+                    .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(confirmpassword)
+                    .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(department)
+                    .addComponent(deptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(search)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(back)
-                    .addComponent(update))
+                    .addComponent(update)
+                    .addComponent(edit)
+                    .addComponent(remove))
                 .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -101,13 +189,34 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         
     }//GEN-LAST:event_updateActionPerformed
 
+    private void usernametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernametxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernametxtActionPerformed
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
+    private javax.swing.JPasswordField confirmpasstxt;
+    private javax.swing.JLabel confirmpassword;
+    private javax.swing.JLabel department;
+    private javax.swing.JTextField deptxt;
+    private javax.swing.JButton edit;
     private javax.swing.JTextField empidtxt;
     private javax.swing.JLabel employeeid;
     private javax.swing.JLabel employeename;
-    private javax.swing.JTextField empnametxt;
+    private javax.swing.JTextField fnametxt;
+    private javax.swing.JTextField lnametxt;
+    private javax.swing.JTextField mnametxt;
+    private javax.swing.JPasswordField passtxt;
+    private javax.swing.JLabel password;
+    private javax.swing.JButton remove;
+    private javax.swing.JButton search;
     private javax.swing.JButton update;
+    private javax.swing.JLabel username;
+    private javax.swing.JTextField usernametxt;
     // End of variables declaration//GEN-END:variables
 }
