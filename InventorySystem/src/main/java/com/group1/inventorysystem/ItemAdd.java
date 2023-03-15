@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -164,17 +165,16 @@ public class ItemAdd extends javax.swing.JPanel {
                     Info.DB_CREDENTIALS[0], // dbusername
                     Info.DB_CREDENTIALS[1] // dbpassword
             );
-            PreparedStatement get_username_statement = connection.prepareStatement(
-                    String.format(
-                            "INSERT INTO `items` (`Item_code`, `Name`, `Description`, `Stocks`, `Price`) VALUES (?,?,?,?,?)",
+            Statement get_username_statement = connection.createStatement();
+            get_username_statement.execute(
+            String.format(
+                            "INSERT INTO items VALUES ('%s','%s','%s','%s','%s')",
                             itemcodetxt.getText(),
                             itemnametxt.getText(),
                             descriptiontxt.getText(),
                             stockstxt.getText(),
                             pricetxt.getText()
                     ));
-            // Perform the query.
-            ResultSet get_username_statement_result = get_username_statement.executeQuery();
         } catch (SQLException | NullPointerException ex) {
             JOptionPane.showMessageDialog(main_frame, "Error: " + ex);
         }

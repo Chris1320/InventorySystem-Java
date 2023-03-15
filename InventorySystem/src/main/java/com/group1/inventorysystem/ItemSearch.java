@@ -65,8 +65,8 @@ public class ItemSearch extends javax.swing.JPanel {
         descriptiontxt = new javax.swing.JTextField();
         stockstxt = new javax.swing.JTextField();
         pricetxt = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        edit = new javax.swing.JButton();
+        save = new javax.swing.JButton();
 
         search.setText("SEARCH ITEM");
         search.addActionListener(new java.awt.event.ActionListener() {
@@ -92,17 +92,25 @@ public class ItemSearch extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("EDIT/REMOVE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        nametxt.setEditable(false);
+
+        descriptiontxt.setEditable(false);
+
+        stockstxt.setEditable(false);
+
+        pricetxt.setEditable(false);
+
+        edit.setText("EDIT/REMOVE");
+        edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                editActionPerformed(evt);
             }
         });
 
-        jButton2.setText("SAVE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        save.setText("SAVE");
+        save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                saveActionPerformed(evt);
             }
         });
 
@@ -134,9 +142,9 @@ public class ItemSearch extends javax.swing.JPanel {
                         .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(search)
-                            .addComponent(jButton1))
+                            .addComponent(edit))
                         .addGap(43, 43, 43)
-                        .addComponent(jButton2)))
+                        .addComponent(save)))
                 .addGap(61, 61, 61))
         );
         layout.setVerticalGroup(
@@ -172,8 +180,8 @@ public class ItemSearch extends javax.swing.JPanel {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(back)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(edit)
+                    .addComponent(save))
                 .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -217,27 +225,33 @@ public class ItemSearch extends javax.swing.JPanel {
         main_frame.validate();
     }//GEN-LAST:event_backActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        main_frame.setContentPane(new EmployeeDashboard(main_frame).getPanel());
+        main_frame.pack();
+        main_frame.validate();
+    }//GEN-LAST:event_saveActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        main_frame.setContentPane(new EmployeeDashboard(main_frame).getPanel());
+        main_frame.pack();
+        main_frame.validate();
+    }//GEN-LAST:event_editActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JLabel description;
     private javax.swing.JTextField descriptiontxt;
+    private javax.swing.JButton edit;
     private javax.swing.JLabel itemcode;
     private javax.swing.JTextField itemcodetxt;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel name;
     private javax.swing.JTextField nametxt;
     private javax.swing.JLabel price;
     private javax.swing.JTextField pricetxt;
+    private javax.swing.JButton save;
     private javax.swing.JButton search;
     private javax.swing.JLabel stocks;
     private javax.swing.JTextField stockstxt;
