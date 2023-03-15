@@ -1,7 +1,6 @@
 package com.group1.inventorysystem;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,14 +11,22 @@ import javax.swing.JPanel;
 
 public class EmployeeUpdate extends javax.swing.JPanel {
 
+    AssetManager asset_manager = new AssetManager();
     JFrame main_frame;
 
     public EmployeeUpdate(JFrame main_frame) {
-        this.main_frame = main_frame;
         initComponents();
+        this.main_frame = main_frame;
+        
+        confirmpassword.setVisible(false);
+        conpasstxt.setVisible(false);
     }
 
-    public void Clear() {
+    public JPanel getPanel() {
+        return this;  // Return itself.
+    }
+
+    public void clear() {
         empidtxt.setText("");
         fnametxt.setText("");
         mnametxt.setText("");
@@ -30,8 +37,38 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         deptxt.setText("");
     }
 
-    public JPanel getPanel() {
-        return this;  // Return itself.
+    /**
+     * Toggle the edit mode of the text fields.
+     * @param state true to enable edit. Otherwise, false.
+     */
+    public void toggleEditMode(boolean state) {
+        fnametxt.setEditable(state);
+        mnametxt.setEditable(state);
+        lnametxt.setEditable(state);
+        usernametxt.setEditable(state);
+        passtxt.setEditable(state);
+        deptxt.setEditable(state);
+        if (state) {
+            edit.setText("CANCEL EDIT");
+            conpasstxt.setVisible(true);
+            confirmpassword.setVisible(true);
+            conpasstxt.setText("");
+        }
+        else {
+            edit.setText("EDIT EMPLOYEE");
+            conpasstxt.setVisible(false);
+            confirmpassword.setVisible(false);
+        }
+    }
+
+    /**
+     * Toggle the availability of the buttons.
+     * @param state true to enable the button. Otherwise, false.
+     */
+    public void toggleEditable(boolean state) {
+        update.setEnabled(state);
+        edit.setEnabled(state);
+        remove.setEnabled(state);
     }
 
     /**
@@ -63,6 +100,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         passtxt = new javax.swing.JPasswordField();
         conpasstxt = new javax.swing.JPasswordField();
         clear = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         back.setText("BACK ");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +110,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         });
 
         update.setText("UPDATE");
+        update.setEnabled(false);
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateActionPerformed(evt);
@@ -113,6 +152,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         });
 
         edit.setText("EDIT EMPLOYEE");
+        edit.setEnabled(false);
         edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editActionPerformed(evt);
@@ -120,6 +160,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         });
 
         remove.setText("REMOVE EMPLOYEE");
+        remove.setEnabled(false);
         remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeActionPerformed(evt);
@@ -128,14 +169,16 @@ public class EmployeeUpdate extends javax.swing.JPanel {
 
         passtxt.setEditable(false);
 
-        conpasstxt.setEditable(false);
-
         clear.setText("CLEAR");
         clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setIcon(asset_manager.getImageIcon("inventory.png", 50, 50));
+        jLabel1.setText("Inventory System ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -161,13 +204,6 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                         .addGap(34, 34, 34)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(edit)
-                        .addGap(31, 31, 31)
-                        .addComponent(remove)
-                        .addGap(40, 40, 40)
-                        .addComponent(update))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -180,7 +216,17 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                             .addComponent(usernametxt)
                             .addComponent(deptxt)
                             .addComponent(passtxt)
-                            .addComponent(conpasstxt))))
+                            .addComponent(conpasstxt)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(edit)
+                                .addGap(31, 31, 31)
+                                .addComponent(remove)
+                                .addGap(40, 40, 40)
+                                .addComponent(update)))))
                 .addContainerGap(66, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -192,7 +238,9 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(employeeid)
                     .addComponent(empidtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -265,7 +313,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
 
            
             JOptionPane.showMessageDialog(null, "Employee updated successfully!!");
-            Clear();
+            this.toggleEditMode(false);
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
@@ -300,7 +348,9 @@ public class EmployeeUpdate extends javax.swing.JPanel {
 
            
             JOptionPane.showMessageDialog(null, "Employee deleted successfully!!");
-            Clear();
+            clear();
+            this.toggleEditMode(false);
+            this.toggleEditable(false);
 
         } catch (SQLException  e) {
             JOptionPane.showMessageDialog(null, e);
@@ -309,13 +359,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
     }//GEN-LAST:event_removeActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        fnametxt.setEditable(true);
-        mnametxt.setEditable(true);
-        lnametxt.setEditable(true);
-        usernametxt.setEditable(true);
-        passtxt.setEditable(true);
-        conpasstxt.setEditable(true);
-        deptxt.setEditable(true);
+        this.toggleEditMode(!fnametxt.isEditable());
     }//GEN-LAST:event_editActionPerformed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
@@ -343,9 +387,10 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                 lnametxt.setText(s3);
                 usernametxt.setText(s4);
                 passtxt.setText(s5);
-                conpasstxt.setText(s5);
                 deptxt.setText(s6);
 
+                this.toggleEditMode(false);
+                this.toggleEditable(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Record not Found");
             } //end of iiner if
@@ -355,7 +400,9 @@ public class EmployeeUpdate extends javax.swing.JPanel {
     }//GEN-LAST:event_searchActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-        Clear();
+        clear();
+        this.toggleEditMode(false);
+        this.toggleEditable(false);
     }//GEN-LAST:event_clearActionPerformed
 
 
@@ -371,6 +418,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
     private javax.swing.JLabel employeeid;
     private javax.swing.JLabel employeename;
     private javax.swing.JTextField fnametxt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField lnametxt;
     private javax.swing.JTextField mnametxt;
     private javax.swing.JPasswordField passtxt;
