@@ -18,7 +18,9 @@ public class Info {
     final public static String[] DB_CREDENTIALS = {"root", ""};
     final public static String DB_NAME = "InventorySystem";
     final public static String DB_SERVER_URL = String.format(
-            "jdbc:mysql://localhost/%s?user=%s&password=%s&useUnicode=true&characterEncoding=UTF-8",
+            "jdbc:mysql://%s:%s/%s?user=%s&password=%s&useUnicode=true&characterEncoding=UTF-8",
+            DB_SERVER_HOST,
+            DB_SERVER_PORT,
             DB_NAME,
             DB_CREDENTIALS[0],
             DB_CREDENTIALS[1]
