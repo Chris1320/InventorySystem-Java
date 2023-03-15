@@ -1,5 +1,6 @@
 package com.group1.inventorysystem;
 
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -41,6 +42,21 @@ public class LoginPanel extends javax.swing.JPanel {
     public JPanel getPanel() {
         return this;  // Return itself.
     }
+    
+    public void logIn() {
+        try {
+            if (this.creds.adminLogIn(this.username.getText(), this.password.getPassword())) {
+                main_frame.setContentPane(new DashboardAdmin(main_frame).getPanel());
+                main_frame.validate();
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Invalid admin username/password!");
+            }
+        }
+        catch (SQLException | NullPointerException ex) {
+            JOptionPane.showMessageDialog(main_frame, "Unable to log in: " + ex);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,9 +83,20 @@ public class LoginPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Password");
 
+        username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameKeyPressed(evt);
+            }
+        });
+
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);
+            }
+        });
+        password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordKeyPressed(evt);
             }
         });
 
@@ -151,19 +178,16 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_employee_log_inActionPerformed
 
     private void admin_log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_log_inActionPerformed
-        try {
-            if (this.creds.adminLogIn(this.username.getText(), this.password.getPassword())) {
-                main_frame.setContentPane(new DashboardAdmin(main_frame).getPanel());
-                main_frame.validate();
-            }
-            else {
-                JOptionPane.showMessageDialog(this, "Invalid admin username/password!");
-            }
-        }
-        catch (SQLException | NullPointerException ex) {
-            JOptionPane.showMessageDialog(main_frame, "Unable to log in: " + ex);
-        }
+        logIn();
     }//GEN-LAST:event_admin_log_inActionPerformed
+
+    private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) logIn();
+    }//GEN-LAST:event_usernameKeyPressed
+
+    private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) logIn();
+    }//GEN-LAST:event_passwordKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
