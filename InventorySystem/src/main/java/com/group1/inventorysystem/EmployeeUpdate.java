@@ -1,6 +1,13 @@
 package com.group1.inventorysystem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class EmployeeUpdate extends javax.swing.JPanel {
@@ -10,6 +17,17 @@ public class EmployeeUpdate extends javax.swing.JPanel {
     public EmployeeUpdate(JFrame main_frame) {
         this.main_frame = main_frame;
         initComponents();
+    }
+
+    public void Clear() {
+        empidtxt.setText("");
+        fnametxt.setText("");
+        mnametxt.setText("");
+        lnametxt.setText("");
+        usernametxt.setText("");
+        passtxt.setText("");
+        conpasstxt.setText("");
+        deptxt.setText("");
     }
 
     public JPanel getPanel() {
@@ -32,9 +50,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         department = new javax.swing.JLabel();
         lnametxt = new javax.swing.JTextField();
         employeeid = new javax.swing.JLabel();
-        passtxt = new javax.swing.JPasswordField();
         password = new javax.swing.JLabel();
-        confirmpasstxt = new javax.swing.JPasswordField();
         empidtxt = new javax.swing.JTextField();
         fnametxt = new javax.swing.JTextField();
         usernametxt = new javax.swing.JTextField();
@@ -44,6 +60,9 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         search = new javax.swing.JButton();
         edit = new javax.swing.JButton();
         remove = new javax.swing.JButton();
+        passtxt = new javax.swing.JPasswordField();
+        conpasstxt = new javax.swing.JPasswordField();
+        clear = new javax.swing.JButton();
 
         back.setText("BACK ");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -61,30 +80,60 @@ public class EmployeeUpdate extends javax.swing.JPanel {
 
         employeename.setText("Employee Name");
 
+        mnametxt.setEditable(false);
+
         department.setText("Department");
+
+        lnametxt.setEditable(false);
 
         employeeid.setText("Employee ID");
 
         password.setText("Password");
 
+        fnametxt.setEditable(false);
+
+        usernametxt.setEditable(false);
         usernametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernametxtActionPerformed(evt);
             }
         });
 
+        deptxt.setEditable(false);
+
         confirmpassword.setText("Confirm Password");
 
         username.setText("Username");
 
         search.setText("SEARCH EMPLOYEE");
+        search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchActionPerformed(evt);
+            }
+        });
 
         edit.setText("EDIT EMPLOYEE");
+        edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editActionPerformed(evt);
+            }
+        });
 
         remove.setText("REMOVE EMPLOYEE");
         remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeActionPerformed(evt);
+            }
+        });
+
+        passtxt.setEditable(false);
+
+        conpasstxt.setEditable(false);
+
+        clear.setText("CLEAR");
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
             }
         });
 
@@ -112,6 +161,13 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                         .addGap(34, 34, 34)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(edit)
+                        .addGap(31, 31, 31)
+                        .addComponent(remove)
+                        .addGap(40, 40, 40)
+                        .addComponent(update))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -122,21 +178,16 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                                 .addComponent(lnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(empidtxt)
                             .addComponent(usernametxt)
+                            .addComponent(deptxt)
                             .addComponent(passtxt)
-                            .addComponent(confirmpasstxt)
-                            .addComponent(deptxt)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(edit)
-                        .addGap(31, 31, 31)
-                        .addComponent(remove)
-                        .addGap(50, 50, 50)
-                        .addComponent(update)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                            .addComponent(conpasstxt))))
+                .addContainerGap(66, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(search)
-                .addGap(239, 239, 239))
+                .addGap(50, 50, 50)
+                .addComponent(clear)
+                .addGap(114, 114, 114))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,20 +206,22 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(username)
                     .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(password)
                     .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmpassword)
-                    .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                    .addComponent(conpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(department)
                     .addComponent(deptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(search)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(search)
+                    .addComponent(clear))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(back)
@@ -186,7 +239,41 @@ public class EmployeeUpdate extends javax.swing.JPanel {
     }//GEN-LAST:event_backActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        
+
+        String employeeID = empidtxt.getText();
+        String firstname = fnametxt.getText();
+        String middlename = mnametxt.getText();
+        String lastname = lnametxt.getText();
+        String username = usernametxt.getText();
+        String password = passtxt.getText();
+        String confirmpassword = conpasstxt.getText();
+        String department = deptxt.getText();
+
+        if (!password.equals(confirmpassword)) {
+            JOptionPane.showMessageDialog(main_frame, "Password mismatch");
+            return;
+        }
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            // establish connection 
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/InventorySystem", "root", "");
+            Statement statement = con.createStatement();
+            
+            statement.executeUpdate (
+                String.format(
+                    "UPDATE `employees` SET `Employee_ID`='%s',"
+                    + "`First_Name`='%s',`Middle_Name`='%s',`Last_Name`='%s',"
+                    + "`username`='%s',`password`='%s',`Department`='%s'",
+                    firstname, middlename,lastname,username,password,confirmpassword,department));
+
+           
+            JOptionPane.showMessageDialog(null, "Employee updated successfully!!");
+            Clear();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, e);
+
+        }
     }//GEN-LAST:event_updateActionPerformed
 
     private void usernametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernametxtActionPerformed
@@ -197,11 +284,64 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_removeActionPerformed
 
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        fnametxt.setEditable(true);
+        mnametxt.setEditable(true);
+        lnametxt.setEditable(true);
+        usernametxt.setEditable(true);
+        passtxt.setEditable(true);
+        conpasstxt.setEditable(true);
+        deptxt.setEditable(true);
+    }//GEN-LAST:event_editActionPerformed
+
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        try {
+            String str = empidtxt.getText();
+            Class.forName("com.mysql.jdbc.Driver");
+            // establish connection
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/InventorySystem", "root", "");
+            PreparedStatement st = con.prepareStatement("select * from employees where Employee_ID=?");
+            st.setString(1, str);
+            //Excuting Query
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                String s = rs.getString(1);
+                String s1 = rs.getString(2);
+                String s2 = rs.getString(3);
+                String s3 = rs.getString(4);
+                String s4 = rs.getString(5);
+                String s5 = rs.getString(6);
+                String s6 = rs.getString(7);
+
+                //Sets Records in TextFields.
+                empidtxt.setText(s);
+                fnametxt.setText(s1);
+                mnametxt.setText(s2);
+                lnametxt.setText(s3);
+                usernametxt.setText(s4);
+                passtxt.setText(s5);
+                conpasstxt.setText(s5);
+                deptxt.setText(s6);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Record not Found");
+            } //end of iiner if
+        } catch (SQLException | ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_searchActionPerformed
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+        Clear();
+    }//GEN-LAST:event_clearActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JPasswordField confirmpasstxt;
+    private javax.swing.JButton clear;
     private javax.swing.JLabel confirmpassword;
+    private javax.swing.JPasswordField conpasstxt;
     private javax.swing.JLabel department;
     private javax.swing.JTextField deptxt;
     private javax.swing.JButton edit;
