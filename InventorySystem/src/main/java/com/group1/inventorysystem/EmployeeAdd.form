@@ -79,12 +79,19 @@
                   </Group>
               </Group>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="empidtxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="employeeid" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -101,7 +108,7 @@
                   <Component id="usernametxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="username" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -118,7 +125,7 @@
                   <Component id="department" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="deptxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="add" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="back" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -159,6 +166,10 @@
     <Component class="javax.swing.JTextField" name="empidtxt">
     </Component>
     <Component class="javax.swing.JTextField" name="fnametxt">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fnametxtFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fnametxtFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="usernametxt">
       <Events>
@@ -174,7 +185,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="add">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ADD"/>
+        <Property name="text" type="java.lang.String" value="ADD EMPLOYEE"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addActionPerformed"/>
@@ -189,12 +200,31 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="mnametxt">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="mnametxtFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="mnametxtFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="lnametxt">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="lnametxtFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="lnametxtFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="passtxt">
     </Component>
     <Component class="javax.swing.JPasswordField" name="confirmpasstxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="36" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="asset_manager.getImageIcon(&quot;inventory.png&quot;, 50, 50)" type="code"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Inventory System "/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
