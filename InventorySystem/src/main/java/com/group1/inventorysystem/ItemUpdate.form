@@ -25,35 +25,15 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="price" min="-2" pref="61" max="-2" attributes="0"/>
-                          <Component id="name" min="-2" max="-2" attributes="0"/>
-                          <Component id="itemcode" min="-2" max="-2" attributes="0"/>
-                          <Component id="description" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="stocks" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="price_lbl" min="-2" pref="61" max="-2" attributes="0"/>
+                          <Component id="name_lbl" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemcode_lbl" min="-2" max="-2" attributes="0"/>
+                          <Component id="description_lbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="stocks_lbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="itemcodetxt" min="-2" pref="176" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="nametxt" min="-2" pref="176" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="descriptiontxt" min="-2" pref="176" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="stockstxt" min="-2" pref="176" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="pricetxt" min="-2" pref="176" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="edit" min="-2" max="-2" attributes="0"/>
@@ -61,6 +41,16 @@
                       <Component id="remove" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="update" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="itemcodetxt" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Component id="nametxt" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Component id="descriptiontxt" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Component id="stockstxt" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Component id="pricetxt" min="-2" pref="176" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
@@ -82,7 +72,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="itemcode" min="-2" max="-2" attributes="0"/>
+                              <Component id="itemcode_lbl" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -92,22 +82,22 @@
                       </Group>
                       <Component id="nametxt" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="name" min="-2" max="-2" attributes="0"/>
+                  <Component id="name_lbl" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="descriptiontxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="description" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="description_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="stockstxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="stocks" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="stocks_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="pricetxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="price" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="price_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="40" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -135,27 +125,27 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="itemcode">
+    <Component class="javax.swing.JLabel" name="itemcode_lbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Item Code"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="name">
+    <Component class="javax.swing.JLabel" name="name_lbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="description">
+    <Component class="javax.swing.JLabel" name="description_lbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Description"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="stocks">
+    <Component class="javax.swing.JLabel" name="stocks_lbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Stocks"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="price">
+    <Component class="javax.swing.JLabel" name="price_lbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Price"/>
       </Properties>

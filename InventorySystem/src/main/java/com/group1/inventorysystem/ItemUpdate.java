@@ -1,7 +1,6 @@
 package com.group1.inventorysystem;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,37 +10,44 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
- *
  * @author Mark Kian
  */
 public class ItemUpdate extends javax.swing.JPanel {
 
     JFrame main_frame;
-    Connection connection;
 
     public ItemUpdate(JFrame main_frame) {
-        this.main_frame = main_frame;
         initComponents();
-
-        try {
-            this.connection = SQLHandler.getConnection();
-        } catch (SQLException | NullPointerException ex) {
-            JOptionPane.showMessageDialog(main_frame, "Error: " + ex);
-        }
-
+        this.main_frame = main_frame;
     }
 
-    public void Clear() {
+    public JPanel getPanel() {
+        return this;
+    }
+
+    public void clear() {
         itemcodetxt.setText("");
         nametxt.setText("");
         descriptiontxt.setText("");
         stockstxt.setText("");
         pricetxt.setText("");
-
+    }
+    
+    public void toggleEditableTextFields() {
+        this.toggleEditableTextFields(!nametxt.isEditable());
     }
 
-    public JPanel getPanel() {
-        return this;
+    /**
+     * Toggle the edit mode of the text fields.
+     * @param state true to enable edit. Otherwise, false.
+     */
+    public void toggleEditableTextFields(boolean state) {
+        nametxt.setEditable(state);
+        descriptiontxt.setEditable(state);
+        stockstxt.setEditable(state);
+        pricetxt.setEditable(state);
+        if (state) edit.setText("CANCEL EDIT");
+        else edit.setText("EDIT ITEM");
     }
 
     /**
@@ -54,11 +60,11 @@ public class ItemUpdate extends javax.swing.JPanel {
     private void initComponents() {
 
         search = new javax.swing.JButton();
-        itemcode = new javax.swing.JLabel();
-        name = new javax.swing.JLabel();
-        description = new javax.swing.JLabel();
-        stocks = new javax.swing.JLabel();
-        price = new javax.swing.JLabel();
+        itemcode_lbl = new javax.swing.JLabel();
+        name_lbl = new javax.swing.JLabel();
+        description_lbl = new javax.swing.JLabel();
+        stocks_lbl = new javax.swing.JLabel();
+        price_lbl = new javax.swing.JLabel();
         back = new javax.swing.JButton();
         itemcodetxt = new javax.swing.JTextField();
         nametxt = new javax.swing.JTextField();
@@ -77,15 +83,15 @@ public class ItemUpdate extends javax.swing.JPanel {
             }
         });
 
-        itemcode.setText("Item Code");
+        itemcode_lbl.setText("Item Code");
 
-        name.setText("Name");
+        name_lbl.setText("Name");
 
-        description.setText("Description");
+        description_lbl.setText("Description");
 
-        stocks.setText("Stocks");
+        stocks_lbl.setText("Stocks");
 
-        price.setText("Price");
+        price_lbl.setText("Price");
 
         back.setText("BACK");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -142,34 +148,27 @@ public class ItemUpdate extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(name)
-                            .addComponent(itemcode)
-                            .addComponent(description)
-                            .addComponent(stocks))))
+                            .addComponent(price_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(name_lbl)
+                            .addComponent(itemcode_lbl)
+                            .addComponent(description_lbl)
+                            .addComponent(stocks_lbl))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(itemcodetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(descriptiontxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(stockstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(edit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(remove)
                         .addGap(18, 18, 18)
-                        .addComponent(update)))
+                        .addComponent(update))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(itemcodetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descriptiontxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stockstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(34, 34, 34))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -186,25 +185,25 @@ public class ItemUpdate extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(itemcode)
+                                .addComponent(itemcode_lbl)
                                 .addGap(23, 23, 23))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(itemcodetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))
                         .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(name))
+                    .addComponent(name_lbl))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(descriptiontxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(description))
+                    .addComponent(description_lbl))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(stockstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stocks))
+                    .addComponent(stocks_lbl))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(price))
+                    .addComponent(price_lbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(search)
@@ -223,36 +222,24 @@ public class ItemUpdate extends javax.swing.JPanel {
         try {
             String str = itemcodetxt.getText();
             Connection con = SQLHandler.getConnection();
-            PreparedStatement st = con.prepareStatement("select * from items where Item_code=?");
+            PreparedStatement st = con.prepareStatement("SELECT * FROM items WHERE Item_code=?");
             st.setString(1, str);
-            //Excuting Query
-            ResultSet rs = st.executeQuery();
+            ResultSet rs = st.executeQuery();  // Excuting Query
 
             if (rs.next()) {
-                String s = rs.getString(1);
-                String s1 = rs.getString(2);
-                String s2 = rs.getString(3);
-                String s3 = rs.getString(4);
-                String s4 = rs.getString(5);
-
-                //Sets Records in TextFields.
-                itemcodetxt.setText(s);
-                nametxt.setText(s1);
-                descriptiontxt.setText(s2);
-                stockstxt.setText(s3);
-                pricetxt.setText(s4);
-
+                // Sets Records in TextFields.
+                itemcodetxt.setText(rs.getString(1));
+                nametxt.setText(rs.getString(2));
+                descriptiontxt.setText(rs.getString(3));
+                stockstxt.setText(rs.getString(4));
+                pricetxt.setText(rs.getString(5));
+                toggleEditableTextFields(false);  // Disable edit if enabled.
             } else {
-                JOptionPane.showMessageDialog(null, "Record not Found");
+                JOptionPane.showMessageDialog(main_frame, "Record not Found");
             } //end of iiner if
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(main_frame, "Error: " + e);
         }
-    }
-
-    private void additemActionPerformed(java.awt.event.ActionEvent evt) {
-
-
     }//GEN-LAST:event_searchActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -273,75 +260,61 @@ public class ItemUpdate extends javax.swing.JPanel {
             Statement statement = con.createStatement();
 
             statement.executeUpdate(
-                    String.format(
-                            "UPDATE items SET Name='%s',Description='%s',Stocks='%s',Price='%s' WHERE Item_code='%s'",
-                            name, description, stocks, price, itemcode));
+                String.format(
+                    "UPDATE items SET Name='%s',Description='%s',Stocks='%s',Price='%s' WHERE Item_code='%s'",
+                    name,
+                    description,
+                    stocks,
+                    price,
+                    itemcode
+                )
+            );
 
-            JOptionPane.showMessageDialog(null, "Item updated successfully!!");
-            Clear();
-
+            JOptionPane.showMessageDialog(main_frame, "Item updated successfully!!");
+            editActionPerformed(evt);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-
+            JOptionPane.showMessageDialog(main_frame, "Error: " + e);
         }
-
     }//GEN-LAST:event_updateActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        nametxt.setEditable(true);
-        descriptiontxt.setEditable(true);
-        stockstxt.setEditable(true);
-        pricetxt.setEditable(true);
-
-
+        this.toggleEditableTextFields();
     }//GEN-LAST:event_editActionPerformed
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        String itemcode = itemcodetxt.getText();
-        String name = nametxt.getText();
-        String description = descriptiontxt.getText();
-        String stocks = stockstxt.getText();
-        String price = pricetxt.getText();
-        
         try {
             Connection con = SQLHandler.getConnection();
             Statement statement = con.createStatement();
-            
-            statement.executeUpdate (
-                String.format(
-                    "DELETE  FROM `items` WHERE Item_code = '%s' ",itemcode));
 
-           
-            JOptionPane.showMessageDialog(null, "Item deleted successfully!!");
-            Clear();
-
+            statement.executeUpdate(String.format("DELETE FROM items WHERE Item_code = '%s'", itemcodetxt.getText()));
+            JOptionPane.showMessageDialog(main_frame, "Item deleted successfully!!");
+            clear();
+            toggleEditableTextFields(false);  // Disable edit if enabled.
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-
+            JOptionPane.showMessageDialog(main_frame, "Error: " + e);
         }
-
     }//GEN-LAST:event_removeActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-        Clear();
+        clear();
+        toggleEditableTextFields(false);  // Disable edit if enabled.
     }//GEN-LAST:event_clearActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JButton clear;
-    private javax.swing.JLabel description;
+    private javax.swing.JLabel description_lbl;
     private javax.swing.JTextField descriptiontxt;
     private javax.swing.JButton edit;
-    private javax.swing.JLabel itemcode;
+    private javax.swing.JLabel itemcode_lbl;
     private javax.swing.JTextField itemcodetxt;
-    private javax.swing.JLabel name;
+    private javax.swing.JLabel name_lbl;
     private javax.swing.JTextField nametxt;
-    private javax.swing.JLabel price;
+    private javax.swing.JLabel price_lbl;
     private javax.swing.JTextField pricetxt;
     private javax.swing.JButton remove;
     private javax.swing.JButton search;
-    private javax.swing.JLabel stocks;
+    private javax.swing.JLabel stocks_lbl;
     private javax.swing.JTextField stockstxt;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
