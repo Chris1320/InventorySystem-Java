@@ -14,23 +14,30 @@ import javax.swing.JPanel;
  *
  * @author Mark Kian
  */
-public class ItemSearch extends javax.swing.JPanel {
+public class ItemUpdate extends javax.swing.JPanel {
 
     JFrame main_frame;
     Connection connection;
 
-    /**
-     * Creates new form search
-     */
-    public ItemSearch(JFrame main_frame) {
-        initComponents();
+    public ItemUpdate(JFrame main_frame) {
         this.main_frame = main_frame;
+        initComponents();
 
         try {
             this.connection = SQLHandler.getConnection();
         } catch (SQLException | NullPointerException ex) {
             JOptionPane.showMessageDialog(main_frame, "Error: " + ex);
         }
+
+    }
+
+    public void Clear() {
+        itemcodetxt.setText("");
+        nametxt.setText("");
+        descriptiontxt.setText("");
+        stockstxt.setText("");
+        pricetxt.setText("");
+
     }
 
     public JPanel getPanel() {
@@ -60,6 +67,8 @@ public class ItemSearch extends javax.swing.JPanel {
         pricetxt = new javax.swing.JTextField();
         edit = new javax.swing.JButton();
         save = new javax.swing.JButton();
+        remove = new javax.swing.JButton();
+        clear = new javax.swing.JButton();
 
         search.setText("SEARCH ITEM");
         search.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +102,7 @@ public class ItemSearch extends javax.swing.JPanel {
 
         pricetxt.setEditable(false);
 
-        edit.setText("EDIT/REMOVE");
+        edit.setText("EDIT ITEM");
         edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editActionPerformed(evt);
@@ -104,6 +113,20 @@ public class ItemSearch extends javax.swing.JPanel {
         save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveActionPerformed(evt);
+            }
+        });
+
+        remove.setText("REMOVE ITEM");
+        remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionPerformed(evt);
+            }
+        });
+
+        clear.setText("CLEAR");
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
             }
         });
 
@@ -124,21 +147,36 @@ public class ItemSearch extends javax.swing.JPanel {
                             .addComponent(itemcode)
                             .addComponent(description)
                             .addComponent(stocks))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(itemcodetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(descriptiontxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stockstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(search)
-                            .addComponent(edit))
-                        .addGap(43, 43, 43)
+                        .addGap(27, 27, 27)
+                        .addComponent(itemcodetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(descriptiontxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(stockstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(edit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(remove)
+                        .addGap(18, 18, 18)
                         .addComponent(save)))
-                .addGap(61, 61, 61))
+                .addGap(34, 34, 34))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(search)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(clear)
+                .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,121 +206,55 @@ public class ItemSearch extends javax.swing.JPanel {
                     .addComponent(pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(price))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(search)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(search)
+                    .addComponent(clear))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(back)
                     .addComponent(edit)
-                    .addComponent(save))
+                    .addComponent(save)
+                    .addComponent(remove))
                 .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-        try {
-            // Prepare the password query to the database.
-            PreparedStatement get_item_info = connection.prepareStatement(
-                    String.format(
-                            "SELECT * FROM items WHERE Item_code=?"
-                    )
-            );
-            get_item_info.setString(1, itemcodetxt.getText());
 
-            // Perform the query.
-            ResultSet item_info = get_item_info.executeQuery();
-
-            // If no username matched, invalid username.
-            if (!item_info.next()) {
-                JOptionPane.showMessageDialog(main_frame, "no item found");
-            }
-
-            // If password matched, login process is successful.
-            nametxt.setText(item_info.getString("Name"));
-            descriptiontxt.setText(item_info.getString("Description"));
-            stockstxt.setText(item_info.getString("Stocks"));
-            pricetxt.setText(item_info.getString("Price"));
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(main_frame, ex);
-        }
     }
 
     private void additemActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        try {
-            this.connection = SQLHandler.getConnection();
-            Statement get_username_statement = connection.createStatement();
-            get_username_statement.execute(
-                    String.format(
-                            "INSERT INTO items VALUES ('%s','%s','%s','%s','%s')",
-                            itemcodetxt.getText(),
-                            nametxt.getText(),
-                            descriptiontxt.getText(),
-                            stockstxt.getText(),
-                            pricetxt.getText()
-                    )
-            );
-            // Perform the query.
-        } catch (SQLException | NullPointerException ex) {
-            JOptionPane.showMessageDialog(main_frame, "Error: " + ex);
-        }
 
 
     }//GEN-LAST:event_searchActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        main_frame.setContentPane(new EmployeeDashboard(main_frame).getPanel());
+        main_frame.setContentPane(new ItemDashboard(main_frame).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_backActionPerformed
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
-        // TODO add your handling code here:
-        
-        String itemcode = itemcodetxt.getText();
-        String name = nametxt.getText();
-        String description = descriptiontxt.getText();
-        String stocks = stockstxt.getText();
-        String price = pricetxt.getText();
 
-        if (!password.equals(confirmpassword)) {
-            JOptionPane.showMessageDialog(main_frame, "Password mismatch");
-            return;
-        }
-        try {
-            Connection con = SQLHandler.getConnection();
-            Statement statement = con.createStatement();
-            
-            statement.executeUpdate (
-                String.format(
-                    "UPDATE `employees` SET `Item_code`='%s',"
-                    + "`Name`='%s',`Description`='%s',`Stocks,'Price'`='%s',"
-                    + "`username`='%s',`password`='%s',`Department`='%s'",
-                    itemcode, name,description,stocks,price));
 
-           
-            JOptionPane.showMessageDialog(null, "Employee updated successfully!!");
-            Clear();
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-
-        }
-    }                              
-        main_frame.setContentPane(new EmployeeDashboard(main_frame).getPanel());
-        main_frame.pack();
-        main_frame.validate();
     }//GEN-LAST:event_saveActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        // TODO add your handling code here:
-        main_frame.setContentPane(new EmployeeDashboard(main_frame).getPanel());
-        main_frame.pack();
-        main_frame.validate();
+
     }//GEN-LAST:event_editActionPerformed
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+
+    }//GEN-LAST:event_removeActionPerformed
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+        Clear();
+    }//GEN-LAST:event_clearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
+    private javax.swing.JButton clear;
     private javax.swing.JLabel description;
     private javax.swing.JTextField descriptiontxt;
     private javax.swing.JButton edit;
@@ -292,6 +264,7 @@ public class ItemSearch extends javax.swing.JPanel {
     private javax.swing.JTextField nametxt;
     private javax.swing.JLabel price;
     private javax.swing.JTextField pricetxt;
+    private javax.swing.JButton remove;
     private javax.swing.JButton save;
     private javax.swing.JButton search;
     private javax.swing.JLabel stocks;

@@ -148,7 +148,7 @@ public class ItemAdd extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        main_frame.setContentPane(new EmployeeDashboard(main_frame).getPanel());
+        main_frame.setContentPane(new ItemDashboard(main_frame).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_backActionPerformed

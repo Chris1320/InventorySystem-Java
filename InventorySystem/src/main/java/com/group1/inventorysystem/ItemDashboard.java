@@ -6,13 +6,13 @@ import javax.swing.JPanel;
 /**
  * @author Mark Kian
  */
-public class EmployeeDashboard extends javax.swing.JPanel {
+public class ItemDashboard extends javax.swing.JPanel {
 
     JFrame main_frame;
     /**
      * Creates new form employee
      */
-    public EmployeeDashboard(JFrame main_frame) {
+    public ItemDashboard(JFrame main_frame) {
         initComponents();
         this.main_frame=main_frame;
     }
@@ -90,7 +90,7 @@ public class EmployeeDashboard extends javax.swing.JPanel {
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
-        main_frame.setContentPane(new ItemSearch(main_frame).getPanel());
+        main_frame.setContentPane(new ItemUpdate(main_frame).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_searchActionPerformed
