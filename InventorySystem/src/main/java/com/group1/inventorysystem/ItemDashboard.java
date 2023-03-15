@@ -98,6 +98,7 @@ public class ItemDashboard extends javax.swing.JPanel {
     private void additemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additemActionPerformed
         // TODO add your handling code here:
         main_frame.setContentPane(new ItemAdd(main_frame).getPanel());
+        main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_additemActionPerformed
 

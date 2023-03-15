@@ -327,18 +327,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
         String employeeID = empidtxt.getText();
-        String firstname = fnametxt.getText();
-        String middlename = mnametxt.getText();
-        String lastname = lnametxt.getText();
-        String username = usernametxt.getText();
-        String password = passtxt.getText();
-        String confirmpassword = conpasstxt.getText();
-        String department = deptxt.getText();
 
-        if (!password.equals(confirmpassword)) {
-            JOptionPane.showMessageDialog(main_frame, "Password mismatch");
-            return;
-        }
         try {
              Connection con = SQLHandler.getConnection();
             Statement statement = con.createStatement();
@@ -346,7 +335,6 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                 String.format(
                     "DELETE  FROM `employees` WHERE Employee_ID = '%s' ",employeeID));
 
-           
             JOptionPane.showMessageDialog(null, "Employee deleted successfully!!");
             clear();
             this.toggleEditMode(false);

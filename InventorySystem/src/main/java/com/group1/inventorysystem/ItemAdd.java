@@ -173,6 +173,9 @@ public class ItemAdd extends javax.swing.JPanel {
                 pricetxt.getText()
             ));
             JOptionPane.showMessageDialog(main_frame, "Item added successfully.");
+            main_frame.setContentPane(new ItemDashboard(main_frame).getPanel());
+            main_frame.pack();
+            main_frame.validate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(main_frame, "Error: " + ex);
         }
