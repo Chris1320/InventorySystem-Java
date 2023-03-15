@@ -9,12 +9,12 @@ public class Info {
     public static String NAME = "Inventory System";
 
     // if true, do not connect to the database. ! FOR DEV ENV ONLY !
-    final public static boolean OFFLINE_MODE = true;
+    final public static boolean OFFLINE_MODE = false;
 
     // Database information
     final public static String DB_SERVER_HOST = "localhost";
-    final public static int DB_SERVER_PORT = 32513;
-    final public static String[] DB_CREDENTIALS = {"root", "root"};
+    final public static int DB_SERVER_PORT = 3306;
+    final public static String[] DB_CREDENTIALS = {"root", ""};
     final public static String DB_NAME = "InventorySystem";
     final public static String DB_SERVER_URL = String.format(
         "jdbc:mysql://%s:%s/%s",
