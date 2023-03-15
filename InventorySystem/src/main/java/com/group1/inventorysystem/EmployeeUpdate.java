@@ -292,11 +292,8 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             return;
         }
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            // establish connection 
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/inventorysystem", "root", "");
+             Connection con = SQLHandler.getConnection();
             Statement statement = con.createStatement();
-            
             statement.executeUpdate (
                 String.format(
                     "DELETE  FROM `employees` WHERE Employee_ID = '%s' ",employeeID));
@@ -305,7 +302,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Employee deleted successfully!!");
             Clear();
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException  e) {
             JOptionPane.showMessageDialog(null, e);
 
         }
