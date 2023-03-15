@@ -158,7 +158,7 @@ public class LoginPanel extends javax.swing.JPanel {
             }
         }
         catch (SQLException | NullPointerException ex) {
-            JOptionPane.showMessageDialog(main_frame, "Unable to log in.");
+            JOptionPane.showMessageDialog(main_frame, "Unable to log in: " + ex);
         }
     }//GEN-LAST:event_admin_log_inActionPerformed
 

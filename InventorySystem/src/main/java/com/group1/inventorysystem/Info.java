@@ -10,7 +10,7 @@ public class Info {
     public static String NAME = "Inventory System";
 
     // if true, do not connect to the database. ! FOR DEV ENV ONLY !
-    final public static boolean OFFLINE_MODE = false;
+    final public static boolean OFFLINE_MODE = true;
 
     // Database information
     final public static String DB_SERVER_HOST = "localhost";
