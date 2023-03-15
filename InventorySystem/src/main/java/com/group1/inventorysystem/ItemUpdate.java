@@ -32,22 +32,24 @@ public class ItemUpdate extends javax.swing.JPanel {
         stockstxt.setText("");
         pricetxt.setText("");
     }
-    
-    public void toggleEditableTextFields() {
-        this.toggleEditableTextFields(!nametxt.isEditable());
-    }
 
     /**
      * Toggle the edit mode of the text fields.
      * @param state true to enable edit. Otherwise, false.
      */
-    public void toggleEditableTextFields(boolean state) {
+    public void toggleEditMode(boolean state) {
         nametxt.setEditable(state);
         descriptiontxt.setEditable(state);
         stockstxt.setEditable(state);
         pricetxt.setEditable(state);
         if (state) edit.setText("CANCEL EDIT");
         else edit.setText("EDIT ITEM");
+    }
+    
+    public void toggleEditable(boolean state) {
+        update.setEnabled(state);
+        edit.setEnabled(state);
+        remove.setEnabled(state);
     }
 
     /**
@@ -109,6 +111,7 @@ public class ItemUpdate extends javax.swing.JPanel {
         pricetxt.setEditable(false);
 
         edit.setText("EDIT ITEM");
+        edit.setEnabled(false);
         edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editActionPerformed(evt);
@@ -116,6 +119,7 @@ public class ItemUpdate extends javax.swing.JPanel {
         });
 
         update.setText("UPDATE");
+        update.setEnabled(false);
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateActionPerformed(evt);
@@ -123,6 +127,7 @@ public class ItemUpdate extends javax.swing.JPanel {
         });
 
         remove.setText("REMOVE ITEM");
+        remove.setEnabled(false);
         remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeActionPerformed(evt);
@@ -233,7 +238,8 @@ public class ItemUpdate extends javax.swing.JPanel {
                 descriptiontxt.setText(rs.getString(3));
                 stockstxt.setText(rs.getString(4));
                 pricetxt.setText(rs.getString(5));
-                toggleEditableTextFields(false);  // Disable edit if enabled.
+                toggleEditMode(false);  // Disable edit if enabled.
+                toggleEditable(true);  // Allow to user to enter edit mode.
             } else {
                 JOptionPane.showMessageDialog(main_frame, "Record not Found");
             } //end of iiner if
@@ -271,14 +277,15 @@ public class ItemUpdate extends javax.swing.JPanel {
             );
 
             JOptionPane.showMessageDialog(main_frame, "Item updated successfully!!");
-            editActionPerformed(evt);
+            this.toggleEditMode(false);
+            this.toggleEditable(true);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(main_frame, "Error: " + e);
         }
     }//GEN-LAST:event_updateActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        this.toggleEditableTextFields();
+        this.toggleEditMode(!nametxt.isEditable());
     }//GEN-LAST:event_editActionPerformed
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
@@ -289,7 +296,8 @@ public class ItemUpdate extends javax.swing.JPanel {
             statement.executeUpdate(String.format("DELETE FROM items WHERE Item_code = '%s'", itemcodetxt.getText()));
             JOptionPane.showMessageDialog(main_frame, "Item deleted successfully!!");
             clear();
-            toggleEditableTextFields(false);  // Disable edit if enabled.
+            toggleEditMode(false);  // Disable edit if enabled.
+            toggleEditable(false);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(main_frame, "Error: " + e);
         }
@@ -297,7 +305,8 @@ public class ItemUpdate extends javax.swing.JPanel {
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         clear();
-        toggleEditableTextFields(false);  // Disable edit if enabled.
+        toggleEditMode(false);  // Disable edit if enabled.
+        toggleEditable(false);
     }//GEN-LAST:event_clearActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
