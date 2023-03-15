@@ -25,5 +25,7 @@ public class Info {
             DB_CREDENTIALS[0],
             DB_CREDENTIALS[1]
     );
-
+    
+    // Where all program assets are stored.
+    final public static String ASSETS_PATH = "./assets";
 }

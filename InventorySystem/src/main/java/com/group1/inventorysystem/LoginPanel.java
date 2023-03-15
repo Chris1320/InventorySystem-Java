@@ -12,12 +12,14 @@ import javax.swing.JPanel;
  */
 public class LoginPanel extends javax.swing.JPanel {
     JFrame main_frame;
+    AssetManager asset_manager;
     CredentialsManager creds;
 
     /**
      * @param main_frame The parent JFrame.
      */
     public LoginPanel(JFrame main_frame) {
+        this.asset_manager = new AssetManager();
         initComponents();
 
         this.main_frame = main_frame;
@@ -58,6 +60,7 @@ public class LoginPanel extends javax.swing.JPanel {
         admin_log_in = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setIcon(asset_manager.getImageIcon("inventory.png", 50, 50));
         jLabel1.setText("Inventory System ");
 
         jLabel2.setText("Username");

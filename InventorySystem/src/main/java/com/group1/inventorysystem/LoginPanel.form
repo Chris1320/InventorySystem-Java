@@ -70,6 +70,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="36" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="asset_manager.getImageIcon(&quot;inventory.png&quot;, 50, 50)" type="code"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Inventory System "/>
       </Properties>
     </Component>
