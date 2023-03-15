@@ -4,7 +4,13 @@
  */
 package com.group1.inventorysystem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -14,6 +20,7 @@ import javax.swing.JPanel;
 public class ItemSearch extends javax.swing.JPanel {
 
     JFrame main_frame;
+    Connection connection;
 
     /**
      * Creates new form search
@@ -21,6 +28,16 @@ public class ItemSearch extends javax.swing.JPanel {
     public ItemSearch(JFrame main_frame) {
         initComponents();
         this.main_frame = main_frame;
+
+        try {
+            this.connection = DriverManager.getConnection(
+                    Info.DB_SERVER_URL,
+                    Info.DB_CREDENTIALS[0], // dbusername
+                    Info.DB_CREDENTIALS[1] // dbpassword
+            );
+        } catch (SQLException | NullPointerException ex) {
+            JOptionPane.showMessageDialog(main_frame, "Error: " + ex);
+        }
     }
 
     public JPanel getPanel() {
@@ -162,7 +179,35 @@ public class ItemSearch extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-       
+        main_frame.setContentPane(new EmployeeDashboard(main_frame).getPanel());
+        main_frame.pack();
+        main_frame.validate();
+    }
+
+    private void additemActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        try {
+            this.connection = DriverManager.getConnection(
+                    Info.DB_SERVER_URL,
+                    Info.DB_CREDENTIALS[0], // dbusername
+                    Info.DB_CREDENTIALS[1] // dbpassword
+            );
+            PreparedStatement get_username_statement = connection.prepareStatement(
+                    String.format(
+                            "INSERT INTO `items` (`Item_code`, `Name`, `Description`, `Stocks`, `Price`) VALUES (?,?,?,?,?)",
+                            itemcodetxt.getText(),
+                            nametxt.getText(),
+                            descriptiontxt.getText(),
+                            stockstxt.getText(),
+                            pricetxt.getText()
+                    )
+            );
+            // Perform the query.
+            ResultSet get_username_statement_result = get_username_statement.executeQuery();
+        } catch (SQLException | NullPointerException ex) {
+            JOptionPane.showMessageDialog(main_frame, "Error: " + ex);
+        }
+   
 
     }//GEN-LAST:event_searchActionPerformed
 

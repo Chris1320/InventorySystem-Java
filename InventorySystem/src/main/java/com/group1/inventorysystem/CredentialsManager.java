@@ -72,7 +72,8 @@ public class CredentialsManager {
         // Prepare the password query to the database.
         PreparedStatement get_username_statement = connection.prepareStatement(
                 String.format(
-                        "SELECT password FROM %s WHERE username=?",
+                        "SELECT password FROM %s.%s WHERE username=?",
+                        Info.DB_NAME,
                         table_name
                 )
         );
