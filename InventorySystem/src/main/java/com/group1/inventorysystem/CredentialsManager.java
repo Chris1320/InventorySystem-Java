@@ -98,9 +98,7 @@ public class CredentialsManager {
      */
     public static String convertPasswordToString(char[] password) {
         StringBuilder result = new StringBuilder();
-        for (char c : password) {
-            result.append(c);
-        }
+        for (char c : password) result.append(c);
         return result.toString();
     }
 }
