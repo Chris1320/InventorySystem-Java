@@ -14,6 +14,7 @@ import javax.swing.JPanel;
  */
 public class ItemUpdate extends javax.swing.JPanel {
 
+    AssetManager asset_manager = new AssetManager();
     JFrame main_frame;
 
     public ItemUpdate(JFrame main_frame) {
@@ -45,7 +46,11 @@ public class ItemUpdate extends javax.swing.JPanel {
         if (state) edit.setText("CANCEL EDIT");
         else edit.setText("EDIT ITEM");
     }
-    
+
+    /**
+     * Toggle the availability of the buttons.
+     * @param state true to enable the button. Otherwise, false.
+     */
     public void toggleEditable(boolean state) {
         update.setEnabled(state);
         edit.setEnabled(state);
@@ -77,6 +82,7 @@ public class ItemUpdate extends javax.swing.JPanel {
         update = new javax.swing.JButton();
         remove = new javax.swing.JButton();
         clear = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         search.setText("SEARCH ITEM");
         search.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +147,10 @@ public class ItemUpdate extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setIcon(asset_manager.getImageIcon("inventory.png", 50, 50));
+        jLabel1.setText("Inventory System ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,15 +187,20 @@ public class ItemUpdate extends javax.swing.JPanel {
                 .addGap(34, 34, 34))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(search)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(clear)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(search)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(clear)))
                 .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,11 +224,11 @@ public class ItemUpdate extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(price_lbl))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(search)
                     .addComponent(clear))
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(back)
                     .addComponent(edit)
@@ -317,6 +332,7 @@ public class ItemUpdate extends javax.swing.JPanel {
     private javax.swing.JButton edit;
     private javax.swing.JLabel itemcode_lbl;
     private javax.swing.JTextField itemcodetxt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel name_lbl;
     private javax.swing.JTextField nametxt;
     private javax.swing.JLabel price_lbl;
