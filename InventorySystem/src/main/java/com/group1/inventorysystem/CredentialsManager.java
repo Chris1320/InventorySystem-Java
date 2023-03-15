@@ -40,7 +40,7 @@ public class CredentialsManager {
      */
     public boolean employeeLogIn(String username, char[] password) throws SQLException, NullPointerException {
         if (Info.OFFLINE_MODE) return true;
-        return this.loginHandler(username, password, "employees");
+        return this.loginHandler(username, password, "employees") | this.loginHandler(username, password, "admins");
     }
 
     /**
