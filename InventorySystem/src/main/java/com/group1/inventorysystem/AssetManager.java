@@ -1,7 +1,6 @@
 package com.group1.inventorysystem;
 
 import java.awt.Image;
-import java.io.FileNotFoundException;
 import javax.swing.ImageIcon;
 
 /**
