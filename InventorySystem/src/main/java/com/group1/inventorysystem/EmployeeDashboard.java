@@ -95,6 +95,7 @@ public class EmployeeDashboard extends javax.swing.JPanel {
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
         main_frame.setContentPane(new ItemSearch(main_frame).getPanel());
+        main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_searchActionPerformed
 

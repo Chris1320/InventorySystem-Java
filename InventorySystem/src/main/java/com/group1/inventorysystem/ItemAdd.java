@@ -44,6 +44,11 @@ public class ItemAdd extends javax.swing.JPanel {
         pricetxt = new javax.swing.JTextField();
 
         additem.setText("ADD ITEM");
+        additem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                additemActionPerformed(evt);
+            }
+        });
 
         back.setText("BACK");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +139,10 @@ public class ItemAdd extends javax.swing.JPanel {
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_backActionPerformed
+
+    private void additemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_additemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
