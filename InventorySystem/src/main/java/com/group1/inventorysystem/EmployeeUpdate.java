@@ -259,10 +259,9 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             
             statement.executeUpdate (
                 String.format(
-                    "UPDATE `employees` SET `Employee_ID`='%s',"
-                    + "`First_Name`='%s',`Middle_Name`='%s',`Last_Name`='%s',"
-                    + "`username`='%s',`password`='%s',`Department`='%s'",
-                    firstname, middlename,lastname,username,password,confirmpassword,department));
+                    "UPDATE employees SET First_Name='%s',Middle_Name='%s',Last_Name='%s',username='%s'"
+                    + ",password='%s',Department='%s' WHERE Employee_ID='%s'",
+                    firstname, middlename,lastname,username,password,department,employeeID));
 
            
             JOptionPane.showMessageDialog(null, "Employee updated successfully!!");
@@ -279,7 +278,37 @@ public class EmployeeUpdate extends javax.swing.JPanel {
     }//GEN-LAST:event_usernametxtActionPerformed
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        // TODO add your handling code here:
+        String employeeID = empidtxt.getText();
+        String firstname = fnametxt.getText();
+        String middlename = mnametxt.getText();
+        String lastname = lnametxt.getText();
+        String username = usernametxt.getText();
+        String password = passtxt.getText();
+        String confirmpassword = conpasstxt.getText();
+        String department = deptxt.getText();
+
+        if (!password.equals(confirmpassword)) {
+            JOptionPane.showMessageDialog(main_frame, "Password mismatch");
+            return;
+        }
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            // establish connection 
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/inventorysystem", "root", "");
+            Statement statement = con.createStatement();
+            
+            statement.executeUpdate (
+                String.format(
+                    "DELETE  FROM `employees` WHERE Employee_ID = '%s' ",employeeID));
+
+           
+            JOptionPane.showMessageDialog(null, "Employee deleted successfully!!");
+            Clear();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, e);
+
+        }
     }//GEN-LAST:event_removeActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
