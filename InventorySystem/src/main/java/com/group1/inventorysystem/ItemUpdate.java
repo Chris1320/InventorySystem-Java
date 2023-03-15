@@ -66,7 +66,7 @@ public class ItemUpdate extends javax.swing.JPanel {
         stockstxt = new javax.swing.JTextField();
         pricetxt = new javax.swing.JTextField();
         edit = new javax.swing.JButton();
-        save = new javax.swing.JButton();
+        update = new javax.swing.JButton();
         remove = new javax.swing.JButton();
         clear = new javax.swing.JButton();
 
@@ -109,10 +109,10 @@ public class ItemUpdate extends javax.swing.JPanel {
             }
         });
 
-        save.setText("SAVE");
-        save.addActionListener(new java.awt.event.ActionListener() {
+        update.setText("UPDATE");
+        update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveActionPerformed(evt);
+                updateActionPerformed(evt);
             }
         });
 
@@ -169,7 +169,7 @@ public class ItemUpdate extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(remove)
                         .addGap(18, 18, 18)
-                        .addComponent(save)))
+                        .addComponent(update)))
                 .addGap(34, 34, 34))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -213,14 +213,41 @@ public class ItemUpdate extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(back)
                     .addComponent(edit)
-                    .addComponent(save)
+                    .addComponent(update)
                     .addComponent(remove))
                 .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        try {
+            String str = itemcodetxt.getText();
+            Connection con = SQLHandler.getConnection();
+            PreparedStatement st = con.prepareStatement("select * from items where Item_code=?");
+            st.setString(1, str);
+            //Excuting Query
+            ResultSet rs = st.executeQuery();
 
+            if (rs.next()) {
+                String s = rs.getString(1);
+                String s1 = rs.getString(2);
+                String s2 = rs.getString(3);
+                String s3 = rs.getString(4);
+                String s4 = rs.getString(5);
+
+                //Sets Records in TextFields.
+                itemcodetxt.setText(s);
+                nametxt.setText(s1);
+                descriptiontxt.setText(s2);
+                stockstxt.setText(s3);
+                pricetxt.setText(s4);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Record not Found");
+            } //end of iiner if
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     private void additemActionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,16 +261,64 @@ public class ItemUpdate extends javax.swing.JPanel {
         main_frame.validate();
     }//GEN-LAST:event_backActionPerformed
 
-    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        String itemcode = itemcodetxt.getText();
+        String name = nametxt.getText();
+        String description = descriptiontxt.getText();
+        String stocks = stockstxt.getText();
+        String price = pricetxt.getText();
 
+        try {
+            Connection con = SQLHandler.getConnection();
+            Statement statement = con.createStatement();
 
-    }//GEN-LAST:event_saveActionPerformed
+            statement.executeUpdate(
+                    String.format(
+                            "UPDATE items SET Name='%s',Description='%s',Stocks='%s',Price='%s' WHERE Item_code='%s'",
+                            name, description, stocks, price, itemcode));
+
+            JOptionPane.showMessageDialog(null, "Item updated successfully!!");
+            Clear();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+
+        }
+
+    }//GEN-LAST:event_updateActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        nametxt.setEditable(true);
+        descriptiontxt.setEditable(true);
+        stockstxt.setEditable(true);
+        pricetxt.setEditable(true);
+
 
     }//GEN-LAST:event_editActionPerformed
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        String itemcode = itemcodetxt.getText();
+        String name = nametxt.getText();
+        String description = descriptiontxt.getText();
+        String stocks = stockstxt.getText();
+        String price = pricetxt.getText();
+        
+        try {
+            Connection con = SQLHandler.getConnection();
+            Statement statement = con.createStatement();
+            
+            statement.executeUpdate (
+                String.format(
+                    "DELETE  FROM `items` WHERE Item_code = '%s' ",itemcode));
+
+           
+            JOptionPane.showMessageDialog(null, "Item deleted successfully!!");
+            Clear();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+
+        }
 
     }//GEN-LAST:event_removeActionPerformed
 
@@ -265,9 +340,9 @@ public class ItemUpdate extends javax.swing.JPanel {
     private javax.swing.JLabel price;
     private javax.swing.JTextField pricetxt;
     private javax.swing.JButton remove;
-    private javax.swing.JButton save;
     private javax.swing.JButton search;
     private javax.swing.JLabel stocks;
     private javax.swing.JTextField stockstxt;
+    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
