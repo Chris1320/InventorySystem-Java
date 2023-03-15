@@ -4,7 +4,12 @@
  */
 package com.group1.inventorysystem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -12,16 +17,18 @@ import javax.swing.JPanel;
  * @author USER
  */
 public class EmployeeAdd extends javax.swing.JPanel {
-  JFrame main_frame;
-    
-    public EmployeeAdd(  JFrame main_frame ) {
+
+    JFrame main_frame;
+
+    public EmployeeAdd(JFrame main_frame) {
         initComponents();
         this.main_frame = main_frame;
     }
-    
- public JPanel getPanel() {
+
+    public JPanel getPanel() {
         return this;  // Return itself.
- }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,6 +38,8 @@ public class EmployeeAdd extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         username = new javax.swing.JLabel();
         employeename = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -38,16 +47,18 @@ public class EmployeeAdd extends javax.swing.JPanel {
         employeeid = new javax.swing.JLabel();
         password = new javax.swing.JLabel();
         empidtxt = new javax.swing.JTextField();
-        empnametxt = new javax.swing.JTextField();
-        usertxt = new javax.swing.JTextField();
-        passtxt = new javax.swing.JTextField();
+        fnametxt = new javax.swing.JTextField();
+        usernametxt = new javax.swing.JTextField();
         deptxt = new javax.swing.JTextField();
         confirmpassword = new javax.swing.JLabel();
-        conpasstxt = new javax.swing.JTextField();
         add = new javax.swing.JButton();
         back = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        mnametxt = new javax.swing.JTextField();
+        lnametxt = new javax.swing.JTextField();
+        passtxt = new javax.swing.JPasswordField();
+        confirmpasstxt = new javax.swing.JPasswordField();
+
+        jScrollPane1.setViewportView(jEditorPane1);
 
         username.setText("Username");
 
@@ -59,9 +70,9 @@ public class EmployeeAdd extends javax.swing.JPanel {
 
         password.setText("Password");
 
-        usertxt.addActionListener(new java.awt.event.ActionListener() {
+        usernametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usertxtActionPerformed(evt);
+                usernametxtActionPerformed(evt);
             }
         });
 
@@ -94,36 +105,34 @@ public class EmployeeAdd extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(department)
-                                    .addComponent(employeename)
-                                    .addComponent(username)
-                                    .addComponent(employeeid)
-                                    .addComponent(password)
-                                    .addComponent(back))
-                                .addGap(29, 29, 29))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(confirmpassword)
-                                .addGap(18, 18, 18)))))
+                            .addComponent(department)
+                            .addComponent(employeename)
+                            .addComponent(username)
+                            .addComponent(employeeid)
+                            .addComponent(password)
+                            .addComponent(back)
+                            .addComponent(confirmpassword))
+                        .addGap(19, 19, 19)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(empidtxt)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(empnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(fnametxt, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(mnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(empidtxt)
                             .addComponent(passtxt)
-                            .addComponent(deptxt)
-                            .addComponent(conpasstxt)
-                            .addComponent(usertxt))
-                        .addContainerGap(119, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(add)
+                            .addComponent(confirmpasstxt)
+                            .addComponent(deptxt))
+                        .addContainerGap(45, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(usernametxt, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(add)))
                         .addGap(48, 48, 48))))
         );
         layout.setVerticalGroup(
@@ -135,29 +144,29 @@ public class EmployeeAdd extends javax.swing.JPanel {
                     .addComponent(employeeid))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(empnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(employeename)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usertxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(username))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(password)
+                    .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(password))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(conpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirmpassword))
+                    .addComponent(confirmpassword)
+                    .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(department))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add)
                     .addComponent(back))
@@ -165,12 +174,35 @@ public class EmployeeAdd extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usertxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usertxtActionPerformed
+    private void usernametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernametxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usertxtActionPerformed
+    }//GEN-LAST:event_usernametxtActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        String employeeID = empidtxt.getText();
+        String firstname = fnametxt.getText();
+        String middlename = mnametxt.getText();
+        String lastname = lnametxt.getText();
+        String username = usernametxt.getText();
+        String password = passtxt.getText();
+        String confirmpass = confirmpasstxt.getText();
+        String department = deptxt.getText();
 
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            // establish connection 
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/InventorySystem", "root", "");
+            Statement statement = con.createStatement();
+
+            statement.executeUpdate("INSERT INTO employees VALUES('" + employeeID + "', '" + firstname + "', '" + middlename + "','"
+                    + lastname + "','" + username + "', '" + password + "','" + confirmpass + "','" + department + "');");
+            JOptionPane.showMessageDialog(null, "Employee added successfully!!");
+            // Clear();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, e);
+
+        }
     }//GEN-LAST:event_addActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -183,20 +215,22 @@ public class EmployeeAdd extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JButton back;
+    private javax.swing.JPasswordField confirmpasstxt;
     private javax.swing.JLabel confirmpassword;
-    private javax.swing.JTextField conpasstxt;
     private javax.swing.JLabel department;
     private javax.swing.JTextField deptxt;
     private javax.swing.JTextField empidtxt;
     private javax.swing.JLabel employeeid;
     private javax.swing.JLabel employeename;
-    private javax.swing.JTextField empnametxt;
+    private javax.swing.JTextField fnametxt;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField passtxt;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField lnametxt;
+    private javax.swing.JTextField mnametxt;
+    private javax.swing.JPasswordField passtxt;
     private javax.swing.JLabel password;
     private javax.swing.JLabel username;
-    private javax.swing.JTextField usertxt;
+    private javax.swing.JTextField usernametxt;
     // End of variables declaration//GEN-END:variables
 }
