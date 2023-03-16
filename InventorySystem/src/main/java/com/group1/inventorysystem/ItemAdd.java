@@ -16,11 +16,13 @@ public class ItemAdd extends javax.swing.JPanel {
     AssetManager asset_manager = new AssetManager();
     JFrame main_frame;
     Connection connection;
+    String username;
 
-    public ItemAdd(JFrame main_frame) {
+    public ItemAdd(JFrame main_frame, String username) {
         initComponents();
 
         this.main_frame = main_frame;
+        this.username = username;
         try {
             this.connection = SQLHandler.getConnection();
         } catch (SQLException ex) {
@@ -154,7 +156,7 @@ public class ItemAdd extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        main_frame.setContentPane(new ItemDashboard(main_frame).getPanel());
+        main_frame.setContentPane(new ItemDashboard(main_frame, username).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_backActionPerformed
@@ -173,7 +175,7 @@ public class ItemAdd extends javax.swing.JPanel {
                 pricetxt.getText()
             ));
             JOptionPane.showMessageDialog(main_frame, "Item added successfully.");
-            main_frame.setContentPane(new ItemDashboard(main_frame).getPanel());
+            main_frame.setContentPane(new ItemDashboard(main_frame, username).getPanel());
             main_frame.pack();
             main_frame.validate();
         } catch (SQLException ex) {

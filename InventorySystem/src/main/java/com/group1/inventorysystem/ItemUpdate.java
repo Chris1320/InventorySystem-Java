@@ -16,10 +16,12 @@ public class ItemUpdate extends javax.swing.JPanel {
 
     AssetManager asset_manager = new AssetManager();
     JFrame main_frame;
+    String username;
 
-    public ItemUpdate(JFrame main_frame) {
+    public ItemUpdate(JFrame main_frame, String username) {
         initComponents();
         this.main_frame = main_frame;
+        this.username = username;
     }
 
     public JPanel getPanel() {
@@ -265,7 +267,7 @@ public class ItemUpdate extends javax.swing.JPanel {
     }//GEN-LAST:event_searchActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        main_frame.setContentPane(new ItemDashboard(main_frame).getPanel());
+        main_frame.setContentPane(new ItemDashboard(main_frame, username).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_backActionPerformed

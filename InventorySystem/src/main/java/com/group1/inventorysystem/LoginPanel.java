@@ -46,7 +46,7 @@ public class LoginPanel extends javax.swing.JPanel {
     public void logIn() {
         try {
             if (this.creds.employeeLogIn(this.username.getText(), this.password.getPassword())) {
-                main_frame.setContentPane(new ItemDashboard(main_frame).getPanel());
+                main_frame.setContentPane(new ItemDashboard(main_frame, this.username.getText()).getPanel());
                 main_frame.pack();
                 main_frame.validate();
             }

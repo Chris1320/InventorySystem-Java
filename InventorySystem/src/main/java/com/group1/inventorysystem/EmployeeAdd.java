@@ -1,6 +1,8 @@
 package com.group1.inventorysystem;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -23,7 +24,7 @@ public class EmployeeAdd extends javax.swing.JPanel {
     boolean mnametxt_modified = false;
     boolean lnametxt_modified = false;
     
-    String employee_img = "";
+    String emp_img_path = "";
 
     public EmployeeAdd(JFrame main_frame) {
         initComponents();
@@ -336,7 +337,7 @@ public class EmployeeAdd extends javax.swing.JPanel {
         }
 
         try {
-            // Get the latest nurse ID.
+            // Get the latest ID.
             int latest_id;
             Connection con = SQLHandler.getConnection();
             Statement latest_id_statement = con.createStatement();
@@ -355,7 +356,7 @@ public class EmployeeAdd extends javax.swing.JPanel {
                 return;
             }
             PreparedStatement statement = con.prepareStatement(
-                "INSERT INTO employees VALUES (?, ?, ?, ?, ?, ?, ?, ?);"
+                "INSERT INTO employees VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
             );
             
             statement.setInt(1, latest_id);
@@ -367,17 +368,24 @@ public class EmployeeAdd extends javax.swing.JPanel {
             statement.setString(7, department);
             if (is_admin.isSelected()) statement.setString(8, "1");
             else statement.setString(8, "0");
+            if (this.emp_img_path.length() != 0) {
+                File image_file = new File(this.emp_img_path);
+                //int image_file_length = (int)image_file.length();
+                FileInputStream image_stream = new FileInputStream(image_file);
+                statement.setBlob(9, image_stream);
+            }
+            else statement.setNull(9, java.sql.Types.BLOB);
 
             statement.executeUpdate();
             JOptionPane.showMessageDialog(
                 main_frame,
                 String.format(
                     "Employee added successfully with employee ID #%s!",
-                        latest_id
+                    latest_id
                 )
             );
             clear();
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             JOptionPane.showMessageDialog(main_frame, "Error: " + e);
         }
     }//GEN-LAST:event_addActionPerformed
@@ -429,8 +437,8 @@ public class EmployeeAdd extends javax.swing.JPanel {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
-        this.employee_img = f.getAbsolutePath();
-        employee_image.setIcon(asset_manager.getExternalImageIcon(this.employee_img, Info.EMPLOYEE_IMG_X, Info.EMPLOYEE_IMG_Y));
+        this.emp_img_path = f.getAbsolutePath();
+        employee_image.setIcon(asset_manager.getExternalImageIcon(this.emp_img_path, Info.EMPLOYEE_IMG_X, Info.EMPLOYEE_IMG_Y));
     }//GEN-LAST:event_add_imageActionPerformed
 
 
