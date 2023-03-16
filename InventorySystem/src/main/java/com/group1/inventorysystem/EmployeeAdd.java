@@ -48,7 +48,6 @@ public class EmployeeAdd extends javax.swing.JPanel {
     }
 
     public void clear() {
-        empidtxt.setText("");
         fnametxt.setText("");
         mnametxt.setText("");
         lnametxt.setText("");
@@ -80,9 +79,7 @@ public class EmployeeAdd extends javax.swing.JPanel {
         employeename_lbl = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         department_lbl = new javax.swing.JLabel();
-        employeeid_lbl = new javax.swing.JLabel();
         password_lbl = new javax.swing.JLabel();
-        empidtxt = new javax.swing.JTextField();
         fnametxt = new javax.swing.JTextField();
         usernametxt = new javax.swing.JTextField();
         confirmpassword_lbl = new javax.swing.JLabel();
@@ -107,8 +104,6 @@ public class EmployeeAdd extends javax.swing.JPanel {
         employeename_lbl.setText("Employee Name");
 
         department_lbl.setText("Department");
-
-        employeeid_lbl.setText("Employee ID");
 
         password_lbl.setText("Password");
 
@@ -185,54 +180,51 @@ public class EmployeeAdd extends javax.swing.JPanel {
                         .addGap(76, 76, 76))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(back)
+                        .addGap(44, 44, 44)))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(add)
+                .addGap(48, 48, 48))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(department_lbl)
                             .addComponent(employeename_lbl)
                             .addComponent(username_lbl)
-                            .addComponent(employeeid_lbl)
                             .addComponent(password_lbl)
-                            .addComponent(back)
                             .addComponent(confirmpassword_lbl))
-                        .addGap(19, 19, 19)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(add)
-                        .addGap(48, 48, 48))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(fnametxt, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                                        .addComponent(fnametxt)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(mnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(empidtxt)
-                                    .addComponent(passtxt)))
+                                    .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(depbox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(is_admin)))
-                        .addContainerGap(54, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(is_admin)))))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(empidtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(employeeid_lbl))
-                .addGap(17, 17, 17)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(employeename_lbl)
@@ -242,9 +234,7 @@ public class EmployeeAdd extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(username_lbl))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(password_lbl)
                     .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -257,7 +247,7 @@ public class EmployeeAdd extends javax.swing.JPanel {
                     .addComponent(department_lbl)
                     .addComponent(depbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(is_admin))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add)
                     .addComponent(back))
@@ -270,7 +260,6 @@ public class EmployeeAdd extends javax.swing.JPanel {
     }//GEN-LAST:event_usernametxtActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        String employeeID = empidtxt.getText();
         String firstname = fnametxt.getText();
         String middlename = mnametxt.getText();
         String lastname = lnametxt.getText();
@@ -287,12 +276,29 @@ public class EmployeeAdd extends javax.swing.JPanel {
             return;
         }
         try {
+            // Get the latest nurse ID.
+            int latest_id;
             Connection con = SQLHandler.getConnection();
+            Statement latest_id_statement = con.createStatement();
+            latest_id_statement.execute("SELECT MAX(Employee_ID) FROM employees");
+            ResultSet latest_id_statement_result = latest_id_statement.getResultSet();
+
+            if (latest_id_statement_result.next()) {
+                try {
+                    latest_id = Integer.parseInt(latest_id_statement_result.getString(1));
+                    latest_id++;
+                } catch (NumberFormatException ex) {
+                    latest_id = 1;  // If there's no records in db yet.
+                }
+            } else {
+                JOptionPane.showMessageDialog(main_frame, "Cannot get nurse ID.");
+                return;
+            }
             PreparedStatement statement = con.prepareStatement(
                 "INSERT INTO employees VALUES (?, ?, ?, ?, ?, ?, ?, ?);"
             );
             
-            statement.setString(1, employeeID);
+            statement.setInt(1, latest_id);
             statement.setString(2, firstname);
             statement.setString(3, middlename);
             statement.setString(4, lastname);
@@ -303,7 +309,13 @@ public class EmployeeAdd extends javax.swing.JPanel {
             else statement.setString(8, "0");
 
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(main_frame, "Employee added successfully!!");
+            JOptionPane.showMessageDialog(
+                main_frame,
+                String.format(
+                    "Employee added successfully with employee ID #%s!",
+                        latest_id
+                )
+            );
             clear();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(main_frame, "Error: " + e);
@@ -361,8 +373,6 @@ public class EmployeeAdd extends javax.swing.JPanel {
     private javax.swing.JLabel confirmpassword_lbl;
     private javax.swing.JLabel department_lbl;
     private javax.swing.JComboBox<String> depbox;
-    private javax.swing.JTextField empidtxt;
-    private javax.swing.JLabel employeeid_lbl;
     private javax.swing.JLabel employeename_lbl;
     private javax.swing.JTextField fnametxt;
     private javax.swing.JCheckBox is_admin;

@@ -48,38 +48,42 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="back" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="add" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="department_lbl" min="-2" max="-2" attributes="0"/>
                           <Component id="employeename_lbl" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="username_lbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="employeeid_lbl" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="password_lbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="back" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="confirmpassword_lbl" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="add" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                               <Component id="usernametxt" alignment="1" min="-2" pref="352" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="fnametxt" pref="156" max="32767" attributes="0"/>
+                                      <Component id="fnametxt" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="mnametxt" min="-2" pref="91" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lnametxt" min="-2" pref="93" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="empidtxt" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="passtxt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="passtxt" alignment="0" min="-2" pref="352" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="confirmpasstxt" min="-2" pref="352" max="-2" attributes="0"/>
@@ -89,14 +93,9 @@
                               <Component id="is_admin" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="54" max="32767" attributes="0"/>
                   </Group>
               </Group>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -105,12 +104,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="empidtxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="employeeid_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="32767" attributes="0"/>
+              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="fnametxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="employeename_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -122,9 +118,7 @@
                   <Component id="usernametxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="username_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="password_lbl" min="-2" max="-2" attributes="0"/>
                   <Component id="passtxt" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -140,7 +134,7 @@
                   <Component id="depbox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="is_admin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace pref="47" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="add" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="back" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -168,17 +162,10 @@
         <Property name="text" type="java.lang.String" value="Department"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="employeeid_lbl">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Employee ID"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="password_lbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="empidtxt">
     </Component>
     <Component class="javax.swing.JTextField" name="fnametxt">
       <Events>
