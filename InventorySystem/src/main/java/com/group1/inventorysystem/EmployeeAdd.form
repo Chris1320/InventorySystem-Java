@@ -13,6 +13,16 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jCheckBox1"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -39,13 +49,13 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="department" min="-2" max="-2" attributes="0"/>
-                          <Component id="employeename" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="username" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="employeeid" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="password" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="department_lbl" min="-2" max="-2" attributes="0"/>
+                          <Component id="employeename_lbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="username_lbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="employeeid_lbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="password_lbl" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="back" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="confirmpassword" min="-2" max="-2" attributes="0"/>
+                          <Component id="confirmpassword_lbl" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
@@ -73,7 +83,11 @@
                               </Group>
                           </Group>
                           <Component id="confirmpasstxt" min="-2" pref="352" max="-2" attributes="0"/>
-                          <Component id="deptxt" min="-2" pref="352" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="depbox" min="-2" pref="173" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="is_admin" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace pref="54" max="32767" attributes="0"/>
                   </Group>
@@ -94,36 +108,37 @@
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="empidtxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="employeeid" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="employeeid_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="fnametxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="employeename" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="employeename_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="mnametxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lnametxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="usernametxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="username" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="username_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="password" min="-2" max="-2" attributes="0"/>
+                  <Component id="password_lbl" min="-2" max="-2" attributes="0"/>
                   <Component id="passtxt" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="confirmpassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="confirmpassword_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="confirmpasstxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="department" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="deptxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="department_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="depbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="is_admin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -136,29 +151,29 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="username">
+    <Component class="javax.swing.JLabel" name="username_lbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Username"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="employeename">
+    <Component class="javax.swing.JLabel" name="employeename_lbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Employee Name"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
     </Component>
-    <Component class="javax.swing.JLabel" name="department">
+    <Component class="javax.swing.JLabel" name="department_lbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Department"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="employeeid">
+    <Component class="javax.swing.JLabel" name="employeeid_lbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Employee ID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="password">
+    <Component class="javax.swing.JLabel" name="password_lbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>
@@ -176,9 +191,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernametxtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="deptxt">
-    </Component>
-    <Component class="javax.swing.JLabel" name="confirmpassword">
+    <Component class="javax.swing.JLabel" name="confirmpassword_lbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirm Password"/>
       </Properties>
@@ -224,6 +237,24 @@
           <Connection code="asset_manager.getImageIcon(&quot;inventory.png&quot;, 50, 50)" type="code"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Inventory System "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="depbox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depboxActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="is_admin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="With Admin Privileges"/>
       </Properties>
     </Component>
   </SubComponents>

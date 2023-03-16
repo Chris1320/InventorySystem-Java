@@ -1,6 +1,8 @@
 package com.group1.inventorysystem;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JFrame;
@@ -29,6 +31,20 @@ public class EmployeeAdd extends javax.swing.JPanel {
         fnametxt.setForeground(ColorManager.PLACEHOLDER_FG);
         mnametxt.setForeground(ColorManager.PLACEHOLDER_FG);
         lnametxt.setForeground(ColorManager.PLACEHOLDER_FG);
+        
+        try {
+            Connection connection = SQLHandler.getConnection();
+            Statement get_departments_statement = connection.createStatement();
+            ResultSet get_departments_statement_result = get_departments_statement.executeQuery("SELECT * FROM departments");
+            while (get_departments_statement_result.next()) {
+                this.depbox.addItem(
+                    get_departments_statement_result.getString("Dept_ID")
+                );
+            }
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(main_frame, "Cannot get available departments.");
+        }
     }
 
     public void clear() {
@@ -39,7 +55,8 @@ public class EmployeeAdd extends javax.swing.JPanel {
         usernametxt.setText("");
         passtxt.setText("");
         confirmpasstxt.setText("");
-        deptxt.setText("");
+        depbox.setSelectedIndex(0);
+        is_admin.setSelected(false);
     }
 
     public JPanel getPanel() {
@@ -57,17 +74,18 @@ public class EmployeeAdd extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
-        username = new javax.swing.JLabel();
-        employeename = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        username_lbl = new javax.swing.JLabel();
+        employeename_lbl = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        department = new javax.swing.JLabel();
-        employeeid = new javax.swing.JLabel();
-        password = new javax.swing.JLabel();
+        department_lbl = new javax.swing.JLabel();
+        employeeid_lbl = new javax.swing.JLabel();
+        password_lbl = new javax.swing.JLabel();
         empidtxt = new javax.swing.JTextField();
         fnametxt = new javax.swing.JTextField();
         usernametxt = new javax.swing.JTextField();
-        deptxt = new javax.swing.JTextField();
-        confirmpassword = new javax.swing.JLabel();
+        confirmpassword_lbl = new javax.swing.JLabel();
         add = new javax.swing.JButton();
         back = new javax.swing.JButton();
         mnametxt = new javax.swing.JTextField();
@@ -75,18 +93,24 @@ public class EmployeeAdd extends javax.swing.JPanel {
         passtxt = new javax.swing.JPasswordField();
         confirmpasstxt = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
+        depbox = new javax.swing.JComboBox<>();
+        is_admin = new javax.swing.JCheckBox();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
-        username.setText("Username");
+        jLabel2.setText("jLabel2");
 
-        employeename.setText("Employee Name");
+        jCheckBox1.setText("jCheckBox1");
 
-        department.setText("Department");
+        username_lbl.setText("Username");
 
-        employeeid.setText("Employee ID");
+        employeename_lbl.setText("Employee Name");
 
-        password.setText("Password");
+        department_lbl.setText("Department");
+
+        employeeid_lbl.setText("Employee ID");
+
+        password_lbl.setText("Password");
 
         fnametxt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -103,7 +127,7 @@ public class EmployeeAdd extends javax.swing.JPanel {
             }
         });
 
-        confirmpassword.setText("Confirm Password");
+        confirmpassword_lbl.setText("Confirm Password");
 
         add.setText("ADD EMPLOYEE");
         add.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +165,14 @@ public class EmployeeAdd extends javax.swing.JPanel {
         jLabel1.setIcon(asset_manager.getImageIcon("inventory.png", 50, 50));
         jLabel1.setText("Inventory System ");
 
+        depbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depboxActionPerformed(evt);
+            }
+        });
+
+        is_admin.setText("With Admin Privileges");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,13 +186,13 @@ public class EmployeeAdd extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(department)
-                            .addComponent(employeename)
-                            .addComponent(username)
-                            .addComponent(employeeid)
-                            .addComponent(password)
+                            .addComponent(department_lbl)
+                            .addComponent(employeename_lbl)
+                            .addComponent(username_lbl)
+                            .addComponent(employeeid_lbl)
+                            .addComponent(password_lbl)
                             .addComponent(back)
-                            .addComponent(confirmpassword))
+                            .addComponent(confirmpassword_lbl))
                         .addGap(19, 19, 19)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -181,7 +213,10 @@ public class EmployeeAdd extends javax.swing.JPanel {
                                     .addComponent(empidtxt)
                                     .addComponent(passtxt)))
                             .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deptxt, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(depbox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(is_admin)))
                         .addContainerGap(54, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(130, 130, 130)
@@ -196,31 +231,32 @@ public class EmployeeAdd extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empidtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(employeeid))
+                    .addComponent(employeeid_lbl))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(employeename)
+                    .addComponent(employeename_lbl)
                     .addComponent(mnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(username))
+                    .addComponent(username_lbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(password)
+                    .addComponent(password_lbl)
                     .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirmpassword)
+                    .addComponent(confirmpassword_lbl)
                     .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(department)
-                    .addComponent(deptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(department_lbl)
+                    .addComponent(depbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(is_admin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add)
@@ -239,21 +275,34 @@ public class EmployeeAdd extends javax.swing.JPanel {
         String middlename = mnametxt.getText();
         String lastname = lnametxt.getText();
         String username = usernametxt.getText();
-        String password = passtxt.getText();
-        String confirmpassword = confirmpasstxt.getText();
-        String department = deptxt.getText();
+        String password = CredentialsManager.hashMessage(passtxt.getPassword());
+        String department = depbox.getSelectedItem().toString();
 
-        if (!password.equals(confirmpassword)) {
+        if (
+            !CredentialsManager.convertPasswordToString(passtxt.getPassword()).equals(
+                CredentialsManager.convertPasswordToString(confirmpasstxt.getPassword())
+            )
+        ) {
             JOptionPane.showMessageDialog(main_frame, "Password mismatch");
             return;
         }
         try {
             Connection con = SQLHandler.getConnection();
-            Statement statement = con.createStatement();
+            PreparedStatement statement = con.prepareStatement(
+                "INSERT INTO employees VALUES (?, ?, ?, ?, ?, ?, ?, ?);"
+            );
+            
+            statement.setString(1, employeeID);
+            statement.setString(2, firstname);
+            statement.setString(3, middlename);
+            statement.setString(4, lastname);
+            statement.setString(5, username);
+            statement.setString(6, password);
+            statement.setString(7, department);
+            if (is_admin.isSelected()) statement.setString(8, "1");
+            else statement.setString(8, "0");
 
-            // FIXME: SQL Injection vulnerability.
-            statement.executeUpdate("INSERT INTO employees VALUES('" + employeeID + "', '" + firstname + "', '" + middlename + "','"
-                    + lastname + "','" + username + "', '" + password + "','" + department + "');");
+            statement.executeUpdate();
             JOptionPane.showMessageDialog(main_frame, "Employee added successfully!!");
             clear();
         } catch (SQLException e) {
@@ -300,27 +349,34 @@ public class EmployeeAdd extends javax.swing.JPanel {
     private void lnametxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lnametxtFocusLost
     }//GEN-LAST:event_lnametxtFocusLost
 
+    private void depboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_depboxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JButton back;
     private javax.swing.JPasswordField confirmpasstxt;
-    private javax.swing.JLabel confirmpassword;
-    private javax.swing.JLabel department;
-    private javax.swing.JTextField deptxt;
+    private javax.swing.JLabel confirmpassword_lbl;
+    private javax.swing.JLabel department_lbl;
+    private javax.swing.JComboBox<String> depbox;
     private javax.swing.JTextField empidtxt;
-    private javax.swing.JLabel employeeid;
-    private javax.swing.JLabel employeename;
+    private javax.swing.JLabel employeeid_lbl;
+    private javax.swing.JLabel employeename_lbl;
     private javax.swing.JTextField fnametxt;
+    private javax.swing.JCheckBox is_admin;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField lnametxt;
     private javax.swing.JTextField mnametxt;
     private javax.swing.JPasswordField passtxt;
-    private javax.swing.JLabel password;
-    private javax.swing.JLabel username;
+    private javax.swing.JLabel password_lbl;
+    private javax.swing.JLabel username_lbl;
     private javax.swing.JTextField usernametxt;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,9 +1,16 @@
 package com.group1.inventorysystem;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Base64;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 
 /**
  * This class handles the login processes of the employees and administrators.
@@ -11,6 +18,7 @@ import java.sql.SQLException;
  * @author Chris
  */
 public class CredentialsManager {
+
     Connection connection;
 
     /**
@@ -34,7 +42,7 @@ public class CredentialsManager {
      */
     public boolean employeeLogIn(String username, char[] password) throws SQLException, NullPointerException {
         if (Info.OFFLINE_MODE) return true;
-        return this.loginHandler(username, password, "employees") | this.loginHandler(username, password, "admins");
+        return this.loginHandler(username, password, false);
     }
 
     /**
@@ -48,7 +56,7 @@ public class CredentialsManager {
      */
     public boolean adminLogIn(String username, char[] password) throws SQLException, NullPointerException {
         if (Info.OFFLINE_MODE) return true;
-        return this.loginHandler(username, password, "admins");
+        return this.loginHandler(username, password, true);
     }
 
     /**
@@ -62,14 +70,10 @@ public class CredentialsManager {
      * @param table_name The table name to query.
      * @return true if the login successful. Otherwise, false.
      */
-    private boolean loginHandler(String username, char[] password, String table_name) throws SQLException, NullPointerException {
+    private boolean loginHandler(String username, char[] password, boolean as_admin) throws SQLException, NullPointerException {
         // Prepare the password query to the database.
         PreparedStatement get_username_statement = connection.prepareStatement(
-                String.format(
-                        "SELECT password FROM %s.%s WHERE username=?",
-                        Info.DB_NAME,
-                        table_name
-                )
+            "SELECT password, is_admin FROM employees WHERE username=?"
         );
         get_username_statement.setString(1, username);
 
@@ -82,10 +86,21 @@ public class CredentialsManager {
         }
 
         // If username matched, get its password.
-        String user_pass = get_username_statement_result.getString(1);
+        String user_pass = get_username_statement_result.getString("password");
+        boolean is_admin = get_username_statement_result.getBoolean("is_admin");
 
         // If password matched, login process is successful.
-        return user_pass.equals(CredentialsManager.convertPasswordToString(password));
+        if (CredentialsManager.comparePasswords(password, user_pass)) {
+            // | as_admin | is_admin | login_success |
+            // |          |          |               |
+            // | true     | true     | true          |
+            // | true     | false    | false         |
+            // | false    | true     | true          |
+            // | false    | false    | true          |
+            if (as_admin) return is_admin;
+            return true;
+        }
+        else return false;
     }
 
     /**
@@ -98,7 +113,67 @@ public class CredentialsManager {
      */
     public static String convertPasswordToString(char[] password) {
         StringBuilder result = new StringBuilder();
-        for (char c : password) result.append(c);
+        for (char c : password) {
+            result.append(c);
+        }
         return result.toString();
+    }
+    
+    public static boolean comparePasswords(char[] password, String hash) {
+        Base64.Decoder b64decoder = Base64.getDecoder();
+
+        String[] checksum = hash.split("\\|");
+        byte[] salt = b64decoder.decode(checksum[1]);
+        String password_hash = CredentialsManager.hashMessage(password, salt);
+        
+        return password_hash.split("\\|")[0].equals(checksum[0]);
+    }
+    
+    /**
+     * This method will hash the message using the PBKDF2 key derivation
+     * algorithm.
+     * 
+     * @param message
+     * @return An array of string that contains the hash and the salt.
+     */
+    public static String hashMessage(char[] message) {
+        // Generate a cryptographically secure salt.
+        SecureRandom rng = new SecureRandom();
+        byte[] salt = new byte[16];
+        rng.nextBytes(salt);
+        return CredentialsManager.hashMessage(message, salt);
+    }
+
+    /**
+     * This method will hash the message using the PBKDF2 key derivation
+     * algorithm.
+     * 
+     * @param message
+     * @param salt
+     * @return An array of string that contains the hash and the salt.
+     */
+    public static String hashMessage(char[] message, byte[] salt) {
+        String algorithm = "PBKDF2WithHmacSHA1";
+        try {
+            // We will be using the PBKDF2 with HMAC-SHA1 key derivation function.
+            SecretKeyFactory secretkey_factory = SecretKeyFactory.getInstance(algorithm);
+
+            // Hash the message with the salt.
+            KeySpec spec = new PBEKeySpec(message, salt, 65536, 128);
+            byte[] hash = secretkey_factory.generateSecret(spec).getEncoded();
+
+            // Encode the hash into Base64.
+            Base64.Encoder b64encoder = Base64.getEncoder();
+
+            return String.format(
+                "%s|%s",
+                b64encoder.encodeToString(hash),
+                b64encoder.encodeToString(salt)
+            );
+        } catch (NoSuchAlgorithmException |InvalidKeySpecException ex) {
+            return "";  // this should never happen since
+                        // we don't dynamically change the
+                        // algorithm that is used.
+        }
     }
 }
