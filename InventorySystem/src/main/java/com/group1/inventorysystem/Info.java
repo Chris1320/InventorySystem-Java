@@ -34,6 +34,9 @@ public class Info {
     final public static int EMPLOYEE_IMG_X = 75;
     final public static int EMPLOYEE_IMG_Y = 75;
     
+    final public static Color TXT_LABEL_DARK = new Color(255, 255, 255);
+    final public static Color TXT_LABEL_LIGHT = new Color(0, 0, 0);
+    
     final public static Color COLOR_ADMIN_DASHBOARD = new Color(217, 96, 117);
     final public static Color COLOR_EMPLOYEE_ADD = new Color(255, 159, 112);
     final public static Color COLOR_EMPLOYEE_UPDATE = new Color(238, 171, 162);
