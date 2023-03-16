@@ -260,9 +260,15 @@ public class EmployeeAdd extends javax.swing.JPanel {
     }//GEN-LAST:event_usernametxtActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        String firstname = fnametxt.getText();
-        String middlename = mnametxt.getText();
-        String lastname = lnametxt.getText();
+        String firstname;
+        String middlename;
+        String lastname;
+        if (fnametxt_modified) firstname = fnametxt.getText();
+        else firstname = "";
+        if (mnametxt_modified) middlename = mnametxt.getText();
+        else middlename = "";
+        if (lnametxt_modified) lastname = lnametxt.getText();
+        else lastname = "";
         String username = usernametxt.getText();
         String password = CredentialsManager.hashMessage(passtxt.getPassword());
         String department = depbox.getSelectedItem().toString();
@@ -275,6 +281,29 @@ public class EmployeeAdd extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(main_frame, "Password mismatch");
             return;
         }
+        
+        if (username.length() < Info.MIN_USERNAME_LEN) {
+            JOptionPane.showMessageDialog(
+                main_frame,
+                String.format(
+                    "Your username should be %s+ characters long!",
+                    Info.MIN_USERNAME_LEN
+                )
+            );
+            return;
+        }
+        
+        if (passtxt.getPassword().length < Info.MIN_PASSWORD_LEN) {
+            JOptionPane.showMessageDialog(
+                main_frame,
+                String.format(
+                    "Your password should be %s+ characters long!",
+                    Info.MIN_PASSWORD_LEN
+                )
+            );
+            return;
+        }
+
         try {
             // Get the latest nurse ID.
             int latest_id;

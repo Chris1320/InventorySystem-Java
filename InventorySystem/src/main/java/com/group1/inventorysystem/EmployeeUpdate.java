@@ -340,16 +340,38 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             return;
         }
 
+        if (username.length() < Info.MIN_USERNAME_LEN) {
+            JOptionPane.showMessageDialog(
+                main_frame,
+                String.format(
+                    "Your username should be %s+ characters long!",
+                    Info.MIN_USERNAME_LEN
+                )
+            );
+            return;
+        }
+        
+        if (passtxt.getPassword().length < Info.MIN_PASSWORD_LEN) {
+            JOptionPane.showMessageDialog(
+                main_frame,
+                String.format(
+                    "Your password should be %s+ characters long!",
+                    Info.MIN_PASSWORD_LEN
+                )
+            );
+            return;
+        }
+
         try {
             Connection con = SQLHandler.getConnection();
             //Statement statement = con.createStatement();
             PreparedStatement statement = con.prepareStatement(
                 String.format(
-                    "%s %s, %s, %s WHERE Employee_ID='?'",
+                    "%s %s %s %s WHERE Employee_ID=?",
                         "UPDATE employees SET",
-                        "First_Name='?', Middle_Name='?', Last_Name='?'",
-                        "username='?', password='?'",
-                        "Department='?', is_admin='?'"
+                        "First_Name=?, Middle_Name=?, Last_Name=?,",
+                        "username=?, password=?,",
+                        "Department=?, is_admin=?"
                 )
             );
             
@@ -358,15 +380,14 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             statement.setString(3, lastname);
             statement.setString(4, username);
             statement.setString(5, password);
-            statement.setString(7, department);
-            statement.setString(9, employeeID);
-
-            if (is_admin.isSelected()) statement.setString(8, "1");
-            else statement.setString(8, "0");
+            statement.setString(6, department);
+            if (is_admin.isSelected()) statement.setString(7, "1");
+            else statement.setString(7, "0");
+            statement.setString(8, employeeID);
             
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Employee updated successfully!!");
             this.toggleEditMode(false);
+            JOptionPane.showMessageDialog(null, "Employee updated successfully!!");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }

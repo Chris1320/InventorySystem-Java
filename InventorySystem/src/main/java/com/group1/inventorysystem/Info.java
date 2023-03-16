@@ -26,6 +26,9 @@ public class Info {
             DB_CREDENTIALS[1]
     );
     
+    final public static int MIN_USERNAME_LEN = 3;
+    final public static int MIN_PASSWORD_LEN = 8;
+    
     // Where all program assets are stored.
     final public static String ASSETS_PATH = "./assets";
 }
