@@ -91,6 +91,8 @@ public class ItemDashboard extends javax.swing.JPanel {
         employee_image = new javax.swing.JLabel();
         greetings = new javax.swing.JLabel();
 
+        setBackground(Info.COLOR_ITEM_DASHBOARD);
+
         additem.setText("Add Item");
         additem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

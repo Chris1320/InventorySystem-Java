@@ -87,6 +87,8 @@ public class ItemUpdate extends javax.swing.JPanel {
         clear = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(Info.COLOR_ITEM_UPDATE);
+
         search.setText("SEARCH ITEM");
         search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -76,6 +76,8 @@ public class LoginPanel extends javax.swing.JPanel {
         employee_log_in = new javax.swing.JButton();
         admin_log_in = new javax.swing.JButton();
 
+        setBackground(Info.COLOR_LOGIN_PANEL);
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setIcon(asset_manager.getImageIcon("inventory.png", 50, 50));
         jLabel1.setText("Inventory System ");

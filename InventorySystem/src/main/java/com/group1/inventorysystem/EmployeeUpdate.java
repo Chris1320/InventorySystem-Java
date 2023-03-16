@@ -120,6 +120,8 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         depbox = new javax.swing.JComboBox<>();
         is_admin = new javax.swing.JCheckBox();
 
+        setBackground(Info.COLOR_EMPLOYEE_UPDATE);
+
         back.setText("BACK ");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

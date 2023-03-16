@@ -57,6 +57,8 @@ public class ItemAdd extends javax.swing.JPanel {
         pricetxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(Info.COLOR_ITEM_ADD);
+
         additem.setText("ADD ITEM");
         additem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

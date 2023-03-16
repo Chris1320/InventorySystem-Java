@@ -34,7 +34,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
         back = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(Info.COLOR_ADMIN_DASHBOARD);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         add.setText("ADD EMPLOYEE");

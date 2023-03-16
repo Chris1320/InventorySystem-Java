@@ -113,6 +113,8 @@ public class EmployeeAdd extends javax.swing.JPanel {
 
         jCheckBox1.setText("jCheckBox1");
 
+        setBackground(Info.COLOR_EMPLOYEE_ADD);
+
         username_lbl.setText("Username");
 
         employeename_lbl.setText("Employee Name");
