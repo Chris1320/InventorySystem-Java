@@ -58,6 +58,15 @@ public class AssetManager {
     }
 
     /**
+     * Get an image icon from the filepath.
+     * @param filename The filename of the asset.
+     * @return The image icon.
+     */
+    public ImageIcon getExternalImageIcon(String filename) {
+        return new ImageIcon(filename);
+    }
+
+    /**
      * Get a scaled version of an image icon from the assets.
      * @param filename The filename of the asset.
      * @param x The width of the icon.
@@ -66,6 +75,19 @@ public class AssetManager {
      */
     public ImageIcon getImageIcon(String filename, int x, int y) {
         ImageIcon img = new ImageIcon(this.getAsset(Kinds.IMAGE, filename));
+        Image img_scaled = img.getImage().getScaledInstance(x, y, Image.SCALE_SMOOTH);
+        return new ImageIcon(img_scaled);
+    }
+    
+    /**
+     * Get a scaled version of an image icon from the filepath.
+     * @param filename The filename of the asset.
+     * @param x The width of the icon.
+     * @param y The length of the icon.
+     * @return The image icon.
+     */
+    public ImageIcon getExternalImageIcon(String filename, int x, int y) {
+        ImageIcon img = new ImageIcon(filename);
         Image img_scaled = img.getImage().getScaledInstance(x, y, Image.SCALE_SMOOTH);
         return new ImageIcon(img_scaled);
     }

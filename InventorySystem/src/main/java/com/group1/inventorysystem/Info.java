@@ -29,6 +29,9 @@ public class Info {
     final public static int MIN_USERNAME_LEN = 3;
     final public static int MIN_PASSWORD_LEN = 8;
     
+    final public static int EMPLOYEE_IMG_X = 75;
+    final public static int EMPLOYEE_IMG_Y = 75;
+    
     // Where all program assets are stored.
     final public static String ASSETS_PATH = "./assets";
 }
