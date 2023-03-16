@@ -12,6 +12,7 @@ import javax.swing.JPanel;
  * @author Chris
  */
 public class LoginPanel extends javax.swing.JPanel {
+
     JFrame main_frame;
     AssetManager asset_manager;
     CredentialsManager creds;
@@ -28,8 +29,8 @@ public class LoginPanel extends javax.swing.JPanel {
             this.creds = new CredentialsManager();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(
-                main_frame,
-                "Unable to connect to the database server: " + e.getMessage()
+                    main_frame,
+                    "Unable to connect to the database server: " + e.getMessage()
             );
         }
     }
@@ -42,19 +43,21 @@ public class LoginPanel extends javax.swing.JPanel {
     public JPanel getPanel() {
         return this;  // Return itself.
     }
-    
+
     public void logIn() {
+        if (this.creds == null) {
+            JOptionPane.showMessageDialog(main_frame, "Unable to connect to the database server.");
+            return;
+        }
         try {
             if (this.creds.employeeLogIn(this.username.getText(), this.password.getPassword())) {
                 main_frame.setContentPane(new ItemDashboard(main_frame, this.username.getText()).getPanel());
                 main_frame.pack();
                 main_frame.validate();
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(main_frame, "Invalid employee username/password!");
             }
-        }
-        catch (SQLException | NullPointerException ex) {
+        } catch (SQLException | NullPointerException ex) {
             JOptionPane.showMessageDialog(main_frame, "Unable to log in: " + ex);
         }
     }
@@ -188,26 +191,30 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_employee_log_inActionPerformed
 
     private void admin_log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_log_inActionPerformed
+        if (this.creds == null) {
+            JOptionPane.showMessageDialog(main_frame, "Unable to connect to the database server.");
+            return;
+        }
         try {
             if (this.creds.adminLogIn(this.username.getText(), this.password.getPassword())) {
                 main_frame.setContentPane(new DashboardAdmin(main_frame).getPanel());
                 main_frame.validate();
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(main_frame, "Invalid admin username/password!");
             }
-        }
-        catch (SQLException | NullPointerException ex) {
+        } catch (SQLException | NullPointerException ex) {
             JOptionPane.showMessageDialog(main_frame, "Unable to log in: " + ex);
         }
     }//GEN-LAST:event_admin_log_inActionPerformed
 
     private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) logIn();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+            logIn();
     }//GEN-LAST:event_usernameKeyPressed
 
     private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) logIn();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+            logIn();
     }//GEN-LAST:event_passwordKeyPressed
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
