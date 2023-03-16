@@ -57,6 +57,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
      * @param state true to enable edit. Otherwise, false.
      */
     public void toggleEditMode(boolean state) {
+        empidtxt.setEditable(!state);
         fnametxt.setEditable(state);
         mnametxt.setEditable(state);
         lnametxt.setEditable(state);
@@ -296,10 +297,11 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                     .addComponent(confirmpassword_lbl)
                     .addComponent(conpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(is_admin)
-                    .addComponent(depbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(department_lbl))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(department_lbl)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(is_admin)
+                        .addComponent(depbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(search)
