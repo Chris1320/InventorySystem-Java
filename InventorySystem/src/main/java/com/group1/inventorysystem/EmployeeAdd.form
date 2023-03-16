@@ -26,7 +26,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-      <Connection code="Info.COLOR_EMPLOYEE_ADD" type="code"/>
+      <Connection code="ColorManager.EMPLOYEE_ADD_BG" type="code"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -59,11 +59,8 @@
                               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="add" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -100,12 +97,19 @@
                               </Group>
                           </Group>
                           <Component id="confirmpasstxt" min="-2" pref="352" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="depbox" min="-2" pref="173" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="is_admin" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="add" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="depbox" min="-2" pref="173" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="is_admin" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -117,9 +121,18 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="32767" attributes="0"/>
-              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace type="separate" max="32767" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -141,7 +154,7 @@
                   </Group>
                   <Component id="employee_image" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="confirmpassword_lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="confirmpasstxt" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -153,7 +166,7 @@
                   <Component id="depbox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="is_admin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="add" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="back" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -166,11 +179,17 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="username_lbl">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="ColorManager.TXT_LABEL_LIGHT" type="code"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Username"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="employeename_lbl">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="ColorManager.TXT_LABEL_LIGHT" type="code"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Employee Name"/>
       </Properties>
     </Component>
@@ -178,11 +197,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="department_lbl">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="ColorManager.TXT_LABEL_LIGHT" type="code"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Department"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="password_lbl">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="ColorManager.TXT_LABEL_LIGHT" type="code"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>
     </Component>
@@ -199,6 +224,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="confirmpassword_lbl">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="ColorManager.TXT_LABEL_LIGHT" type="code"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Confirm Password"/>
       </Properties>
     </Component>
@@ -239,10 +267,16 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="36" style="1"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="ColorManager.TXT_LABEL_LIGHT" type="code"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="asset_manager.getImageIcon(&quot;inventory.png&quot;, 50, 50)" type="code"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Inventory System "/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Info.NAME" type="code"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="depbox">
@@ -260,6 +294,12 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="is_admin">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="ColorManager.EMPLOYEE_ADD_BG" type="code"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="ColorManager.TXT_LABEL_LIGHT" type="code"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="With Admin Privileges"/>
       </Properties>
     </Component>
@@ -275,6 +315,14 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="add_imageActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="JetBrains Mono" size="18" style="2"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Inventory System"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

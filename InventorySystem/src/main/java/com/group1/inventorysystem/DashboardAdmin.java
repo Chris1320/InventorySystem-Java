@@ -93,7 +93,7 @@ public class DashboardAdmin extends javax.swing.JPanel {
         greetings = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setBackground(Info.COLOR_ADMIN_DASHBOARD);
+        setBackground(ColorManager.ADMIN_DASHBOARD_BG);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         add.setText("ADD EMPLOYEE");
@@ -118,15 +118,18 @@ public class DashboardAdmin extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(ColorManager.TXT_LABEL_DARK);
         jLabel1.setIcon(asset_manager.getImageIcon("inventory.png", 50, 50));
         jLabel1.setText(Info.NAME);
 
         employee_image.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         greetings.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        greetings.setForeground(ColorManager.TXT_LABEL_DARK);
         greetings.setText("Hello, %s!");
 
         jLabel2.setFont(new java.awt.Font("JetBrains Mono", 2, 18)); // NOI18N
+        jLabel2.setForeground(ColorManager.TXT_LABEL_DARK);
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Inventory System");
 

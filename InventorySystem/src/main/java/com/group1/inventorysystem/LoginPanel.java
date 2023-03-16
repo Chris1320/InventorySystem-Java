@@ -80,21 +80,21 @@ public class LoginPanel extends javax.swing.JPanel {
         admin_log_in = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setBackground(Info.COLOR_LOGIN_PANEL);
+        setBackground(ColorManager.LOGIN_PANEL_BG);
 
         jLabel1.setFont(new java.awt.Font("JetBrains Mono ExtraBold", 1, 36)); // NOI18N
-        jLabel1.setForeground(Info.TXT_LABEL_DARK);
+        jLabel1.setForeground(ColorManager.TXT_LABEL_DARK);
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(asset_manager.getImageIcon("inventory.png", 50, 50));
         jLabel1.setText(Info.NAME);
 
         jLabel2.setFont(new java.awt.Font("JetBrains Mono Light", 0, 14)); // NOI18N
-        jLabel2.setForeground(Info.TXT_LABEL_DARK);
+        jLabel2.setForeground(ColorManager.TXT_LABEL_DARK);
         jLabel2.setIcon(asset_manager.getImageIcon("user-interface.png", 20, 20));
         jLabel2.setText("Username");
 
         jLabel3.setFont(new java.awt.Font("JetBrains Mono Light", 0, 14)); // NOI18N
-        jLabel3.setForeground(Info.TXT_LABEL_DARK);
+        jLabel3.setForeground(ColorManager.TXT_LABEL_DARK);
         jLabel3.setIcon(asset_manager.getImageIcon("padlock.png", 20, 20));
         jLabel3.setText("Password");
 
@@ -139,7 +139,7 @@ public class LoginPanel extends javax.swing.JPanel {
         });
 
         jLabel4.setFont(new java.awt.Font("JetBrains Mono", 2, 18)); // NOI18N
-        jLabel4.setForeground(Info.TXT_LABEL_DARK);
+        jLabel4.setForeground(ColorManager.TXT_LABEL_DARK);
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Inventory System");
 
@@ -153,9 +153,6 @@ public class LoginPanel extends javax.swing.JPanel {
                         .addGap(103, 103, 103)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
@@ -167,10 +164,15 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addContainerGap(123, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(admin_log_in, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(employee_log_in, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(admin_log_in, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(employee_log_in, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(134, 134, 134))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
