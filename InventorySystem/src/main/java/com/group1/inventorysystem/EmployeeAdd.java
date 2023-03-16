@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 public class EmployeeAdd extends javax.swing.JPanel {
     AssetManager asset_manager = new AssetManager();
     JFrame main_frame;
+    String username;
     
     boolean fnametxt_modified = false;
     boolean mnametxt_modified = false;
@@ -26,9 +27,10 @@ public class EmployeeAdd extends javax.swing.JPanel {
     
     String emp_img_path = "";
 
-    public EmployeeAdd(JFrame main_frame) {
+    public EmployeeAdd(JFrame main_frame, String username) {
         initComponents();
         this.main_frame = main_frame;
+        this.username = username;
         
         // Show placeholder text in name.
         fnametxt.setText("First Name");
@@ -68,6 +70,12 @@ public class EmployeeAdd extends javax.swing.JPanel {
         confirmpasstxt.setText("");
         depbox.setSelectedIndex(0);
         is_admin.setSelected(false);
+        emp_img_path = "";
+        employee_image.setIcon(asset_manager.getImageIcon(
+            "employee_img.png", 
+            Info.EMPLOYEE_IMG_X,
+            Info.EMPLOYEE_IMG_Y
+        ));
     }
 
     public JPanel getPanel() {
@@ -393,7 +401,7 @@ public class EmployeeAdd extends javax.swing.JPanel {
     }//GEN-LAST:event_addActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        main_frame.setContentPane(new DashboardAdmin(main_frame).getPanel());
+        main_frame.setContentPane(new DashboardAdmin(main_frame, this.username).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_backActionPerformed

@@ -13,10 +13,12 @@ public class EmployeeUpdate extends javax.swing.JPanel {
 
     AssetManager asset_manager = new AssetManager();
     JFrame main_frame;
+    String username;
 
-    public EmployeeUpdate(JFrame main_frame) {
+    public EmployeeUpdate(JFrame main_frame, String username) {
         initComponents();
         this.main_frame = main_frame;
+        this.username = username;
         
         confirmpassword_lbl.setVisible(false);
         conpasstxt.setVisible(false);
@@ -50,6 +52,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         passtxt.setText("");
         conpasstxt.setText("");
         depbox.setSelectedIndex(-1);
+        is_admin.setSelected(false);
     }
 
     /**
@@ -319,7 +322,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        main_frame.setContentPane(new DashboardAdmin(main_frame).getPanel());
+        main_frame.setContentPane(new DashboardAdmin(main_frame, username).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_backActionPerformed
@@ -428,7 +431,12 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         try {
             String str = empidtxt.getText();
             Connection con = SQLHandler.getConnection();
-            PreparedStatement st = con.prepareStatement("select * from employees where Employee_ID=?");
+            PreparedStatement st = con.prepareStatement(
+                String.format(
+                    "select %s from employees where Employee_ID=?",
+                        "Employee_ID, First_Name, Middle_Name, Last_Name, username, Department, is_admin"
+                )
+            );
             st.setString(1, str);
             //Excuting Query
             ResultSet rs = st.executeQuery();
@@ -439,8 +447,8 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                 String mname = rs.getString(3);
                 String lname = rs.getString(4);
                 String user = rs.getString(5);
-                String dep = rs.getString(7);
-                is_admin.setSelected(rs.getBoolean(8));
+                String dep = rs.getString(6);
+                is_admin.setSelected(rs.getBoolean(7));
 
                 //Sets Records in TextFields.
                 empidtxt.setText(empid);

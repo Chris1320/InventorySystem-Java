@@ -210,7 +210,12 @@ public class LoginPanel extends javax.swing.JPanel {
         }
         try {
             if (this.creds.adminLogIn(this.username.getText(), this.password.getPassword())) {
-                main_frame.setContentPane(new DashboardAdmin(main_frame).getPanel());
+                main_frame.setContentPane(
+                    new DashboardAdmin(
+                        main_frame,
+                        this.username.getText()
+                    ).getPanel()
+                );
                 main_frame.validate();
             } else {
                 JOptionPane.showMessageDialog(main_frame, "Invalid admin username/password!");
