@@ -39,6 +39,7 @@ public class ItemUpdate extends javax.swing.JPanel {
      * @param state true to enable edit. Otherwise, false.
      */
     public void toggleEditMode(boolean state) {
+        itemcodetxt.setEditable(!state);
         nametxt.setEditable(state);
         descriptiontxt.setEditable(state);
         stockstxt.setEditable(state);
