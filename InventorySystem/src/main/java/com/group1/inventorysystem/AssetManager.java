@@ -58,6 +58,15 @@ public class AssetManager {
     }
 
     /**
+     * Get an image from the assets.
+     * @param filename The filename of the asset.
+     * @return The image icon.
+     */
+    public Image getImage(String filename) {
+        return new ImageIcon(this.getAsset(Kinds.IMAGE, filename)).getImage();
+    }
+
+    /**
      * Get an image icon from the filepath.
      * @param filename The filename of the asset.
      * @return The image icon.

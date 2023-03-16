@@ -15,6 +15,7 @@ public class InventorySystem {
      */
     public static void main(String[] args) {
         JFrame main_window = new JFrame(Info.NAME);
+        AssetManager asset_manager = new AssetManager();
 
         if (Info.OFFLINE_MODE) JOptionPane.showMessageDialog(
             null,
@@ -23,6 +24,7 @@ public class InventorySystem {
 
         main_window.setContentPane(new LoginPanel(main_window).getPanel());
         main_window.setResizable(false);
+        main_window.setIconImage(asset_manager.getImage("ready-stock.png"));
         main_window.pack();
         main_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         main_window.setVisible(true);
