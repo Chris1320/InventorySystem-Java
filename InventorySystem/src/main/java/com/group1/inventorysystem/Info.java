@@ -7,7 +7,7 @@ package com.group1.inventorysystem;
  */
 public class Info {
 
-    public static String NAME = "PureGreen";
+    public static String NAME = "CMJF Supermarket";
 
     // if true, do not connect to the database. ! FOR DEV ENV ONLY !
     final public static boolean OFFLINE_MODE = false;
