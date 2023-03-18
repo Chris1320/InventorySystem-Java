@@ -17,6 +17,7 @@ public class ColorManager {
     final public static Color ADMIN_DASHBOARD_BG = new Color(217, 96, 117);
     final public static Color EMPLOYEE_ADD_BG = new Color(255, 159, 112);
     final public static Color EMPLOYEE_UPDATE_BG = new Color(238, 171, 162);
+    final public static Color EMPLOYEE_LIST_BG = new Color(229, 98, 94);
     final public static Color ITEM_ADD_BG = new Color(167, 189, 147);
     final public static Color ITEM_DASHBOARD_BG = new Color(41, 126, 114);
     final public static Color ITEM_UPDATE_BG = new Color(96, 174, 179);
