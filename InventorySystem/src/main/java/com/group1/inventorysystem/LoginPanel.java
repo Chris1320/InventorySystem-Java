@@ -1,6 +1,9 @@
 package com.group1.inventorysystem;
 
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -98,6 +101,11 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel3.setIcon(asset_manager.getImageIcon("padlock.png", 20, 20));
         jLabel3.setText("Password");
 
+        username.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usernameFocusLost(evt);
+            }
+        });
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
@@ -213,10 +221,10 @@ public class LoginPanel extends javax.swing.JPanel {
         try {
             if (this.creds.adminLogIn(this.username.getText(), this.password.getPassword())) {
                 main_frame.setContentPane(
-                    new DashboardAdmin(
-                        main_frame,
-                        this.username.getText()
-                    ).getPanel()
+                        new DashboardAdmin(
+                                main_frame,
+                                this.username.getText()
+                        ).getPanel()
                 );
                 main_frame.validate();
             } else {
@@ -240,6 +248,24 @@ public class LoginPanel extends javax.swing.JPanel {
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameActionPerformed
+
+    private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
+        if (username.getText().length() == 0)
+            admin_log_in.setEnabled(true);
+        else {
+            try {
+                Connection is_admin_connection = SQLHandler.getConnection();
+                PreparedStatement is_admin_statement = is_admin_connection.prepareStatement(
+                        "SELECT is_admin FROM employees WHERE username=?"
+                );
+                is_admin_statement.setString(1, username.getText());
+                ResultSet is_admin_result = is_admin_statement.executeQuery();
+                if (is_admin_result.next()) {
+                    admin_log_in.setEnabled(is_admin_result.getBoolean("is_admin"));
+                }
+            } catch (SQLException ex) {}  // Do nothing.
+        }
+    }//GEN-LAST:event_usernameFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
