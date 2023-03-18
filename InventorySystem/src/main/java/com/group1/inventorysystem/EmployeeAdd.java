@@ -154,14 +154,14 @@ public class EmployeeAdd extends javax.swing.JPanel {
         confirmpassword_lbl.setForeground(ColorManager.TXT_LABEL_LIGHT);
         confirmpassword_lbl.setText("Confirm Password");
 
-        add.setText("ADD EMPLOYEE");
+        add.setText("Add Employee");
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
             }
         });
 
-        back.setText("BACK");
+        back.setText("Back");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);

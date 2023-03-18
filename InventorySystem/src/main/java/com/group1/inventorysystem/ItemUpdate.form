@@ -56,7 +56,6 @@
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="6" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
@@ -145,7 +144,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="search">
       <Properties>
-        <Property name="text" type="java.lang.String" value="SEARCH ITEM"/>
+        <Property name="text" type="java.lang.String" value="Search Item"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchActionPerformed"/>
@@ -193,7 +192,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="back">
       <Properties>
-        <Property name="text" type="java.lang.String" value="BACK"/>
+        <Property name="text" type="java.lang.String" value="Back"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backActionPerformed"/>
@@ -223,7 +222,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="edit">
       <Properties>
-        <Property name="text" type="java.lang.String" value="EDIT ITEM"/>
+        <Property name="text" type="java.lang.String" value="Edit Item"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -232,7 +231,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="update">
       <Properties>
-        <Property name="text" type="java.lang.String" value="UPDATE"/>
+        <Property name="text" type="java.lang.String" value="Update Item"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -241,7 +240,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="remove">
       <Properties>
-        <Property name="text" type="java.lang.String" value="REMOVE ITEM"/>
+        <Property name="text" type="java.lang.String" value="Remove Item"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -250,7 +249,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="clear">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CLEAR"/>
+        <Property name="text" type="java.lang.String" value="Clear Search Result"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearActionPerformed"/>

@@ -60,14 +60,14 @@ public class ItemAdd extends javax.swing.JPanel {
 
         setBackground(ColorManager.ITEM_ADD_BG);
 
-        additem.setText("ADD ITEM");
+        additem.setText("Add Item");
         additem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 additemActionPerformed(evt);
             }
         });
 
-        back.setText("BACK");
+        back.setText("Back");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
@@ -106,7 +106,7 @@ public class ItemAdd extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(back)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addComponent(additem)
                 .addGap(33, 33, 33))
             .addGroup(layout.createSequentialGroup()

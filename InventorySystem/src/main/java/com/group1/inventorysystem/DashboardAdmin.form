@@ -83,7 +83,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="add">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ADD EMPLOYEE"/>
+        <Property name="text" type="java.lang.String" value="Add Employee"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addActionPerformed"/>
@@ -91,7 +91,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="update">
       <Properties>
-        <Property name="text" type="java.lang.String" value="UPDATE EMPLOYEE"/>
+        <Property name="text" type="java.lang.String" value="Update Employee"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateActionPerformed"/>
@@ -99,7 +99,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="back">
       <Properties>
-        <Property name="text" type="java.lang.String" value="BACK"/>
+        <Property name="text" type="java.lang.String" value="Logout"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backActionPerformed"/>

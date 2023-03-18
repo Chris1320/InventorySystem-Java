@@ -70,13 +70,13 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         depbox.setEnabled(state);
         is_admin.setEnabled(state);
         if (state) {
-            edit.setText("CANCEL EDIT");
+            edit.setText("Cancel Edit");
             conpasstxt.setVisible(true);
             confirmpassword_lbl.setVisible(true);
             conpasstxt.setText("");
         }
         else {
-            edit.setText("EDIT EMPLOYEE");
+            edit.setText("Edit Employee");
             conpasstxt.setVisible(false);
             confirmpassword_lbl.setVisible(false);
         }
@@ -126,14 +126,14 @@ public class EmployeeUpdate extends javax.swing.JPanel {
 
         setBackground(ColorManager.EMPLOYEE_UPDATE_BG);
 
-        back.setText("BACK ");
+        back.setText("Back");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
             }
         });
 
-        update.setText("UPDATE");
+        update.setText("Update Employee");
         update.setEnabled(false);
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,14 +172,14 @@ public class EmployeeUpdate extends javax.swing.JPanel {
         username_lbl.setForeground(ColorManager.TXT_LABEL_LIGHT);
         username_lbl.setText("Username");
 
-        search.setText("SEARCH EMPLOYEE");
+        search.setText("Search Employee");
         search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchActionPerformed(evt);
             }
         });
 
-        edit.setText("EDIT EMPLOYEE");
+        edit.setText("Edit Employee");
         edit.setEnabled(false);
         edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,7 +187,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             }
         });
 
-        remove.setText("REMOVE EMPLOYEE");
+        remove.setText("Remove Employee");
         remove.setEnabled(false);
         remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,7 +197,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
 
         passtxt.setEditable(false);
 
-        clear.setText("CLEAR");
+        clear.setText("Clear Search Result");
         clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearActionPerformed(evt);
@@ -290,7 +290,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(227, 227, 227)
                         .addComponent(jLabel2)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

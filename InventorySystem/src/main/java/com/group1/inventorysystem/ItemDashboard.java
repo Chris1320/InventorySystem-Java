@@ -108,7 +108,7 @@ public class ItemDashboard extends javax.swing.JPanel {
             }
         });
 
-        back.setText("BACK");
+        back.setText("Logout");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);

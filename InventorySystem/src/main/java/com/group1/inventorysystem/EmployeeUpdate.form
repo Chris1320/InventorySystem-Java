@@ -96,7 +96,7 @@
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="66" max="32767" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -162,7 +162,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="back">
       <Properties>
-        <Property name="text" type="java.lang.String" value="BACK "/>
+        <Property name="text" type="java.lang.String" value="Back"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backActionPerformed"/>
@@ -170,7 +170,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="update">
       <Properties>
-        <Property name="text" type="java.lang.String" value="UPDATE"/>
+        <Property name="text" type="java.lang.String" value="Update Employee"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -252,7 +252,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="search">
       <Properties>
-        <Property name="text" type="java.lang.String" value="SEARCH EMPLOYEE"/>
+        <Property name="text" type="java.lang.String" value="Search Employee"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchActionPerformed"/>
@@ -260,7 +260,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="edit">
       <Properties>
-        <Property name="text" type="java.lang.String" value="EDIT EMPLOYEE"/>
+        <Property name="text" type="java.lang.String" value="Edit Employee"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -269,7 +269,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="remove">
       <Properties>
-        <Property name="text" type="java.lang.String" value="REMOVE EMPLOYEE"/>
+        <Property name="text" type="java.lang.String" value="Remove Employee"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -285,7 +285,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="clear">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CLEAR"/>
+        <Property name="text" type="java.lang.String" value="Clear Search Result"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearActionPerformed"/>

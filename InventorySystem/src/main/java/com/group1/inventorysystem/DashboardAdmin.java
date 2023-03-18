@@ -96,21 +96,21 @@ public class DashboardAdmin extends javax.swing.JPanel {
         setBackground(ColorManager.ADMIN_DASHBOARD_BG);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        add.setText("ADD EMPLOYEE");
+        add.setText("Add Employee");
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
             }
         });
 
-        update.setText("UPDATE EMPLOYEE");
+        update.setText("Update Employee");
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateActionPerformed(evt);
             }
         });
 
-        back.setText("BACK");
+        back.setText("Logout");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
