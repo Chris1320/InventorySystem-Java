@@ -106,7 +106,6 @@ public class EmployeeList extends javax.swing.JPanel {
             );
         }
 
-        System.out.println(query);
         try {
             Connection con = SQLHandler.getConnection();
             Statement statement = con.createStatement();
