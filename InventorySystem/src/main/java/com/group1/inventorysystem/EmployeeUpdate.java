@@ -216,6 +216,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             }
         });
 
+        is_admin.setBackground(ColorManager.EMPLOYEE_UPDATE_BG);
         is_admin.setForeground(ColorManager.TXT_LABEL_LIGHT);
         is_admin.setText("With Admin Privileges");
         is_admin.setEnabled(false);
@@ -339,7 +340,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                     .addComponent(update)
                     .addComponent(edit)
                     .addComponent(remove))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
