@@ -21,5 +21,6 @@ public class ColorManager {
     final public static Color ITEM_ADD_BG = new Color(167, 189, 147);
     final public static Color ITEM_DASHBOARD_BG = new Color(41, 126, 114);
     final public static Color ITEM_UPDATE_BG = new Color(96, 174, 179);
+    final public static Color ITEM_LIST_BG = new Color(125, 140, 196);
     final public static Color LOGIN_PANEL_BG = new Color(65, 128, 143);
 }

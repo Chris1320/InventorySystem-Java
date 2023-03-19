@@ -112,7 +112,8 @@ public class ItemUpdate extends javax.swing.JPanel {
         price_lbl.setForeground(ColorManager.TXT_LABEL_DARK);
         price_lbl.setText("Price");
 
-        back.setText("Back");
+        back.setText("Back to Menu");
+        back.setToolTipText("");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
@@ -198,7 +199,6 @@ public class ItemUpdate extends javax.swing.JPanel {
                             .addComponent(pricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(78, 78, 78))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
