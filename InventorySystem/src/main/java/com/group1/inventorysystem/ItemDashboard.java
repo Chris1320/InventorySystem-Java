@@ -21,8 +21,8 @@ import javax.swing.JPanel;
 public class ItemDashboard extends javax.swing.JPanel {
 
     AssetManager asset_manager = new AssetManager();
+    String username, employee_id;
     JFrame main_frame;
-    String username;
 
     public ItemDashboard(JFrame main_frame, String username) {
         initComponents();
@@ -31,7 +31,7 @@ public class ItemDashboard extends javax.swing.JPanel {
         
         try {
             Connection connection = SQLHandler.getConnection();
-            PreparedStatement dept = connection.prepareStatement("SELECT First_Name, image FROM employees WHERE username=?");
+            PreparedStatement dept = connection.prepareStatement("SELECT First_Name, Employee_ID, image FROM employees WHERE username=?");
             dept.setString(1, username);
             ResultSet res = dept.executeQuery();
             
@@ -39,6 +39,7 @@ public class ItemDashboard extends javax.swing.JPanel {
             
             greetings.setText(String.format(greetings.getText(), res.getString("First_Name")));
             Blob image = res.getBlob("image");
+            this.employee_id = res.getString("Employee_ID");
             if (image != null) {
                 InputStream image_stream = image.getBinaryStream();
                 BufferedImage img = ImageIO.read(image_stream);
@@ -196,14 +197,14 @@ public class ItemDashboard extends javax.swing.JPanel {
 
     private void additemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additemActionPerformed
         // TODO add your handling code here:
-        main_frame.setContentPane(new ItemAdd(main_frame, username).getPanel());
+        main_frame.setContentPane(new ItemAdd(main_frame, username, employee_id).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_additemActionPerformed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
-        main_frame.setContentPane(new ItemUpdate(main_frame, username).getPanel());
+        main_frame.setContentPane(new ItemUpdate(main_frame, username, employee_id).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_searchActionPerformed
@@ -215,7 +216,7 @@ public class ItemDashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_backActionPerformed
 
     private void listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listActionPerformed
-        main_frame.setContentPane(new ItemList (main_frame, username).getPanel());
+        main_frame.setContentPane(new ItemList (main_frame, username, employee_id).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_listActionPerformed

@@ -14,15 +14,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ItemList extends javax.swing.JPanel {
     AssetManager asset_manager = new AssetManager();
-    private final String username;
+    private final String username, employee_id;
     private short filter_type = 1;
     JFrame main_frame;
     
-    public ItemList(JFrame main_frame, String username) {
+    public ItemList(JFrame main_frame, String username, String employee_id) {
         initComponents();
         
         this.main_frame = main_frame;
         this.username = username;
+        this.employee_id = employee_id;
         
         try {
             Connection con = SQLHandler.getConnection();
@@ -239,13 +240,13 @@ public class ItemList extends javax.swing.JPanel {
     }//GEN-LAST:event_backActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        main_frame.setContentPane(new ItemUpdate(main_frame, username).getPanel());
+        main_frame.setContentPane(new ItemUpdate(main_frame, username, employee_id).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        main_frame.setContentPane(new ItemAdd(main_frame, username).getPanel());
+        main_frame.setContentPane(new ItemAdd(main_frame, username, employee_id).getPanel());
         main_frame.pack();
         main_frame.validate();
     }//GEN-LAST:event_addButtonActionPerformed

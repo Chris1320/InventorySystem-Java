@@ -14,15 +14,16 @@ import javax.swing.JPanel;
 public class ItemAdd extends javax.swing.JPanel {
 
     AssetManager asset_manager = new AssetManager();
+    String username, employee_id;
     JFrame main_frame;
     Connection connection;
-    String username;
 
-    public ItemAdd(JFrame main_frame, String username) {
+    public ItemAdd(JFrame main_frame, String username, String employee_id) {
         initComponents();
 
         this.main_frame = main_frame;
         this.username = username;
+        this.employee_id = employee_id;
         try {
             this.connection = SQLHandler.getConnection();
         } catch (SQLException ex) {
@@ -198,6 +199,15 @@ public class ItemAdd extends javax.swing.JPanel {
                 stockstxt.getText(),
                 pricetxt.getText(),
                 0  // 0 = unarchived; 1 = archived
+            ));
+                        
+            Statement transaction_statement = connection.createStatement();
+            transaction_statement.execute(
+            String.format(
+                "INSERT INTO transactions VALUES (NOW(),'%s','%s','ADD','%s')",
+                this.employee_id,
+                itemcodetxt.getText(),
+                stockstxt.getText()
             ));
             JOptionPane.showMessageDialog(main_frame, "Item added successfully.");
             main_frame.setContentPane(new ItemDashboard(main_frame, username).getPanel());

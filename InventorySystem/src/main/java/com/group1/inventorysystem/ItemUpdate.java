@@ -15,13 +15,14 @@ import javax.swing.JPanel;
 public class ItemUpdate extends javax.swing.JPanel {
 
     AssetManager asset_manager = new AssetManager();
-    JFrame main_frame;
-    String username;
+    String username, employee_id;
+    JFrame main_frame;;
 
-    public ItemUpdate(JFrame main_frame, String username) {
+    public ItemUpdate(JFrame main_frame, String username, String employee_id) {
         initComponents();
         this.main_frame = main_frame;
         this.username = username;
+        this.employee_id = employee_id;
     }
 
     public JPanel getPanel() {
@@ -316,6 +317,15 @@ public class ItemUpdate extends javax.swing.JPanel {
                     itemcode
                 )
             );
+            
+            Statement transaction_statement = con.createStatement();
+            transaction_statement.execute(
+            String.format(
+                "INSERT INTO transactions VALUES (NOW(),'%s','%s','SET','%s')",
+                this.employee_id,
+                itemcodetxt.getText(),
+                stockstxt.getText()
+            ));
 
             JOptionPane.showMessageDialog(main_frame, "Item updated successfully!!");
             this.toggleEditMode(false);
@@ -340,6 +350,16 @@ public class ItemUpdate extends javax.swing.JPanel {
                     itemcodetxt.getText()
                 )
             );
+
+            Statement transaction_statement = con.createStatement();
+            transaction_statement.execute(
+            String.format(
+                "INSERT INTO transactions VALUES (NOW(),'%s','%s','REMOVE','%s')",
+                this.employee_id,
+                itemcodetxt.getText(),
+                stockstxt.getText()
+            ));
+
             JOptionPane.showMessageDialog(main_frame, "Item deleted successfully!!");
             clear();
             toggleEditMode(false);  // Disable edit if enabled.
