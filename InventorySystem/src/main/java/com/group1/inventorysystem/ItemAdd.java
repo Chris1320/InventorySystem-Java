@@ -191,12 +191,13 @@ public class ItemAdd extends javax.swing.JPanel {
             Statement get_username_statement = connection.createStatement();
             get_username_statement.execute(
             String.format(
-                "INSERT INTO items VALUES ('%s','%s','%s','%s','%s')",
+                "INSERT INTO items VALUES ('%s','%s','%s','%s','%s', '%s')",
                 itemcodetxt.getText(),
                 itemnametxt.getText(),
                 descriptiontxt.getText(),
                 stockstxt.getText(),
-                pricetxt.getText()
+                pricetxt.getText(),
+                0  // 0 = unarchived; 1 = archived
             ));
             JOptionPane.showMessageDialog(main_frame, "Item added successfully.");
             main_frame.setContentPane(new ItemDashboard(main_frame, username).getPanel());

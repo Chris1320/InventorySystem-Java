@@ -268,7 +268,7 @@ public class ItemUpdate extends javax.swing.JPanel {
         try {
             String str = itemcodetxt.getText();
             Connection con = SQLHandler.getConnection();
-            PreparedStatement st = con.prepareStatement("SELECT * FROM items WHERE Item_code=?");
+            PreparedStatement st = con.prepareStatement("SELECT * FROM items WHERE archived=0 AND Item_code=?");
             st.setString(1, str);
             ResultSet rs = st.executeQuery();  // Excuting Query
 
@@ -334,7 +334,12 @@ public class ItemUpdate extends javax.swing.JPanel {
             Connection con = SQLHandler.getConnection();
             Statement statement = con.createStatement();
 
-            statement.executeUpdate(String.format("DELETE FROM items WHERE Item_code = '%s'", itemcodetxt.getText()));
+            statement.executeUpdate(
+                String.format(
+                    "UPDATE items SET archived='1' WHERE Item_code='%s'",
+                    itemcodetxt.getText()
+                )
+            );
             JOptionPane.showMessageDialog(main_frame, "Item deleted successfully!!");
             clear();
             toggleEditMode(false);  // Disable edit if enabled.

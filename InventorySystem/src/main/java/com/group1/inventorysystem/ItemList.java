@@ -27,7 +27,7 @@ public class ItemList extends javax.swing.JPanel {
         try {
             Connection con = SQLHandler.getConnection();
             Statement statement = con.createStatement();
-            ResultSet items = statement.executeQuery("SELECT * FROM items");
+            ResultSet items = statement.executeQuery("SELECT * FROM items WHERE archived='0'");
             DefaultTableModel item_table_model = (DefaultTableModel) item_table.getModel();
             item_table_model.setRowCount(0);  // Remove all table content.
             while (items.next()) {
@@ -251,24 +251,24 @@ public class ItemList extends javax.swing.JPanel {
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void filter_searchbarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filter_searchbarKeyReleased
-        String query = "SELECT * FROM items";
+        String query = "SELECT * FROM items WHERE archived='0'";
         switch (this.filter_type) {
             case 1:
             default:  // set case 1 as the default.
                 query += String.format(
-                    " WHERE Item_code LIKE '%s%s%s'",
+                    " AND Item_code LIKE '%s%s%s'",
                     '%', filter_searchbar.getText(), '%'
                 );
                 break;
             case 2:
                 query += String.format(
-                " WHERE Name LIKE '%s%s%s'",
+                " AND Name LIKE '%s%s%s'",
                     '%', filter_searchbar.getText(), '%'
                 );
                 break;
             case 3:
                 query += String.format(
-                " WHERE Description LIKE '%s%s%s'",
+                " AND Description LIKE '%s%s%s'",
                     '%', filter_searchbar.getText(), '%'
                 );
                 break;
