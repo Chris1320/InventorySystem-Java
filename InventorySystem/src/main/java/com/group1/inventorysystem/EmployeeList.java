@@ -4,26 +4,18 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
  * @author Chris
  */
 public class EmployeeList extends javax.swing.JPanel {
+    AssetManager asset_manager = new AssetManager();
     JFrame main_frame;
     String username;
-    final String[] FILTERS = {
-        "1",
-        "department = 'Administration'",
-        "department = 'Background Staff'",
-        "department = 'Sales'"
-    };
-    AssetManager asset_manager = new AssetManager();
 
     public EmployeeList(JFrame main_frame, String username) {
         initComponents();
