@@ -395,7 +395,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             //Statement statement = con.createStatement();
             PreparedStatement statement = con.prepareStatement(
                 String.format(
-                    "%s %s %s %s WHERE Employee_ID=?",
+                    "%s %s %s %s WHERE Employee_ID=? AND is_active=1",
                         "UPDATE employees SET",
                         "First_Name=?, Middle_Name=?, Last_Name=?,",
                         "username=?, password=?,",
@@ -433,7 +433,8 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             Statement statement = con.createStatement();
             statement.executeUpdate (
                 String.format(
-                    "DELETE  FROM `employees` WHERE Employee_ID = '%s' ",employeeID));
+                    "UPDATE employees SET is_active=0 WHERE Employee_ID='%s' ",employeeID)
+            );
 
             JOptionPane.showMessageDialog(null, "Employee deleted successfully!!");
             clear();
@@ -456,7 +457,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             Connection con = SQLHandler.getConnection();
             PreparedStatement st = con.prepareStatement(
                 String.format(
-                    "select %s from employees where Employee_ID=?",
+                    "select %s from employees where Employee_ID=? AND is_active=1",
                         "Employee_ID, First_Name, Middle_Name, Last_Name, username, Department, is_admin"
                 )
             );

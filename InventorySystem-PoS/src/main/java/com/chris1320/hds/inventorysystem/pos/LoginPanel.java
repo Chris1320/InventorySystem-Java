@@ -42,7 +42,7 @@ public class LoginPanel extends javax.swing.JPanel {
         }
         try {
             Connection c = SQLHandler.getConnection();
-            PreparedStatement emp = c.prepareStatement("SELECT Employee_ID FROM employees WHERE username=?");
+            PreparedStatement emp = c.prepareStatement("SELECT Employee_ID FROM employees WHERE username=? AND is_active=1");
             emp.setString(1, this.username.getText());
             ResultSet res = emp.executeQuery();
             if (res.next()){

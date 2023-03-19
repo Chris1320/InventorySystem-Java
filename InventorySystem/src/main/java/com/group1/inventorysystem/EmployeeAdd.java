@@ -383,7 +383,7 @@ public class EmployeeAdd extends javax.swing.JPanel {
                 return;
             }
             PreparedStatement statement = con.prepareStatement(
-                "INSERT INTO employees VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
+                "INSERT INTO employees VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1);"
             );
             
             statement.setInt(1, latest_id);

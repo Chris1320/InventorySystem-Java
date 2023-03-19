@@ -38,7 +38,7 @@ public class EmployeeList extends javax.swing.JPanel {
             // Get all employee information.
             Statement statement = con.createStatement();
             ResultSet employees = statement.executeQuery(
-                "SELECT Employee_ID, username, First_Name, Middle_Name, Last_Name, department, is_admin FROM employees"
+                "SELECT Employee_ID, username, First_Name, Middle_Name, Last_Name, department, is_admin FROM employees WHERE is_active=1"
             );
             DefaultTableModel employee_table_model = (DefaultTableModel) employee_table.getModel();
             while (employees.next()) {
@@ -65,33 +65,21 @@ public class EmployeeList extends javax.swing.JPanel {
     }
     
     private void setFilter() {
-        boolean filters_applied = false;
         String selected_dept_filter = filter_dept.getSelectedItem().toString();
-        String query = "SELECT Employee_ID, username, First_Name, Middle_Name, Last_Name, department, is_admin FROM employees";
+        String query = "SELECT Employee_ID, username, First_Name, Middle_Name, Last_Name, department, is_admin FROM employees WHERE is_active=1";
         if (filter_dept.getSelectedIndex() == 0) {}
         else {
             // Append the department name to the end of the SQL query.
-            query += String.format(" WHERE department = '%s'", selected_dept_filter);
-            filters_applied = true;
+            query += String.format(" AND department = '%s'", selected_dept_filter);
         }
         
         if (this.filter_admin.isSelected()) {
-            if (filters_applied) query += " AND is_admin = 1";
-            else {
-                query += " WHERE is_admin = 1";
-                filters_applied = true;
-            }
+            query += " AND is_admin = 1";
         }
         
         if (this.filter_username.getText().length() != 0) {
-            if (filters_applied) query += String.format(
+            query += String.format(
                 " AND username LIKE '%s%s%s'",
-                '%',
-                this.filter_username.getText(),
-                '%'
-            );
-            else query += String.format(
-                " WHERE username LIKE '%s%s%s'",
                 '%',
                 this.filter_username.getText(),
                 '%'

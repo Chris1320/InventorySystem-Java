@@ -31,7 +31,7 @@ public class ItemDashboard extends javax.swing.JPanel {
         
         try {
             Connection connection = SQLHandler.getConnection();
-            PreparedStatement dept = connection.prepareStatement("SELECT First_Name, Employee_ID, image FROM employees WHERE username=?");
+            PreparedStatement dept = connection.prepareStatement("SELECT First_Name, Employee_ID, image FROM employees WHERE username=? AND is_active=1");
             dept.setString(1, username);
             ResultSet res = dept.executeQuery();
             

@@ -73,7 +73,7 @@ public class CredentialsManager {
     private boolean loginHandler(String username, char[] password, boolean as_admin) throws SQLException, NullPointerException {
         // Prepare the password query to the database.
         PreparedStatement get_username_statement = connection.prepareStatement(
-            "SELECT password, is_admin FROM employees WHERE username=?"
+            "SELECT password, is_admin FROM employees WHERE username=? AND is_active=1"
         );
         get_username_statement.setString(1, username);
 

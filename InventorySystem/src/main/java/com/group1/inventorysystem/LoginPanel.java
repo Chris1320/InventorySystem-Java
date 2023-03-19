@@ -256,12 +256,15 @@ public class LoginPanel extends javax.swing.JPanel {
             try {
                 Connection is_admin_connection = SQLHandler.getConnection();
                 PreparedStatement is_admin_statement = is_admin_connection.prepareStatement(
-                        "SELECT is_admin FROM employees WHERE username=?"
+                        "SELECT is_admin, is_active FROM employees WHERE username=?"
                 );
                 is_admin_statement.setString(1, username.getText());
                 ResultSet is_admin_result = is_admin_statement.executeQuery();
                 if (is_admin_result.next()) {
-                    admin_log_in.setEnabled(is_admin_result.getBoolean("is_admin"));
+                    boolean user_is_admin = is_admin_result.getBoolean("is_admin");
+                    boolean user_is_enabled = is_admin_result.getBoolean("is_active");
+                    admin_log_in.setEnabled(user_is_admin && user_is_enabled);
+                    employee_log_in.setEnabled(user_is_enabled);
                 }
             } catch (SQLException ex) {}  // Do nothing.
         }
