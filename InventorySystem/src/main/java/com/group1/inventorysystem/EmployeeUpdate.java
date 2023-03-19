@@ -187,7 +187,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
             }
         });
 
-        remove.setText("Remove Employee");
+        remove.setText("Archive Employee");
         remove.setEnabled(false);
         remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,7 +293,7 @@ public class EmployeeUpdate extends javax.swing.JPanel {
                                 .addGap(227, 227, 227)
                                 .addComponent(jLabel2)))
                         .addGap(48, 48, 48)))
-                .addContainerGap(6, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
