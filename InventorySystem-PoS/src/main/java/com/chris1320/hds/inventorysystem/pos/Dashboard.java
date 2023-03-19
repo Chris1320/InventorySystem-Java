@@ -13,15 +13,18 @@ public class Dashboard extends javax.swing.JPanel {
 
     JFrame main_frame;
     private int stocks;
+    private String employee_id;
 
     /**
      * Creates new form Dashboard
      *
      * @param main_frame
+     * @param employee_id
      */
-    public Dashboard(JFrame main_frame) {
+    public Dashboard(JFrame main_frame, String employee_id) {
         initComponents();
         this.main_frame = main_frame;
+        this.employee_id = employee_id;
     }
 
     public JPanel getPanel() {
@@ -263,17 +266,22 @@ public class Dashboard extends javax.swing.JPanel {
         try {
             String str = itemcodetxt.getText();
             Connection con = SQLHandler.getConnection();
-            PreparedStatement st = con.prepareStatement("SELECT * FROM items WHERE Item_code=?");
+            PreparedStatement st = con.prepareStatement("SELECT * FROM items WHERE archived=0 AND Item_code=?");
             st.setString(1, str);
             ResultSet rs = st.executeQuery();  // Excuting Query
 
             if (rs.next()) {
                 // Sets Records in TextFields.
-                itemcodetxt.setText(rs.getString(1));
-                name.setText(rs.getString(2));
-                description.setText(rs.getString(3));
                 stocks = rs.getInt(4);
-                price.setText(rs.getString(5));
+                if (stocks <= 0) {
+                    JOptionPane.showMessageDialog(main_frame, "The item is out of stock.");
+                }
+                else {
+                    itemcodetxt.setText(rs.getString(1));
+                    name.setText(rs.getString(2));
+                    description.setText(rs.getString(3));
+                    price.setText(rs.getString(5));
+                }
             } else {
                 JOptionPane.showMessageDialog(main_frame, "Record not Found");
             } //end of iiner if
@@ -289,7 +297,7 @@ public class Dashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_backActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-                String itemcode = itemcodetxt.getText();
+        String itemcode = itemcodetxt.getText();
         String n = name.getText();
         String d = description.getText();
         String s;
@@ -299,6 +307,11 @@ public class Dashboard extends javax.swing.JPanel {
             return;
         }
         String p = price.getText();
+            
+        if (stocks < Integer.parseInt(quantity.getText())) {
+            JOptionPane.showMessageDialog(main_frame, "The stock is lower than the required amount for the transaction.");
+            return;
+        }
 
         try {
             Connection con = SQLHandler.getConnection();
@@ -314,9 +327,20 @@ public class Dashboard extends javax.swing.JPanel {
                     itemcode
                 )
             );
+            
+            Statement transaction_statement = con.createStatement();
+            transaction_statement.execute(
+            String.format(
+                "INSERT INTO transactions VALUES (NOW(),'%s','%s','SELL','%s')",
+                this.employee_id,
+                itemcodetxt.getText(),
+                0 - Integer.parseInt(quantity.getText())
+            ));
+            
+            this.stocks -= Integer.parseInt(quantity.getText());
 
             JOptionPane.showMessageDialog(main_frame, "Item updated successfully!!");
-        } catch (SQLException e) {
+        } catch (SQLException | NumberFormatException e) {
             JOptionPane.showMessageDialog(main_frame, "Error: " + e);
         }
     }//GEN-LAST:event_editActionPerformed

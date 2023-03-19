@@ -1,6 +1,9 @@
 package com.chris1320.hds.inventorysystem.pos;
 
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -38,12 +41,23 @@ public class LoginPanel extends javax.swing.JPanel {
             return;
         }
         try {
-            if (this.creds.employeeLogIn(this.username.getText(), this.password.getPassword())) {
-                main_frame.setContentPane(new Dashboard(main_frame).getPanel());
+            Connection c = SQLHandler.getConnection();
+            PreparedStatement emp = c.prepareStatement("SELECT Employee_ID FROM employees WHERE username=?");
+            emp.setString(1, this.username.getText());
+            ResultSet res = emp.executeQuery();
+            if (res.next()){
+                String employee_id = res.getString("Employee_ID");
+            
+                if (this.creds.employeeLogIn(this.username.getText(), this.password.getPassword())) {
+                    main_frame.setContentPane(new Dashboard(main_frame, employee_id).getPanel());
                 main_frame.pack();
-                main_frame.validate();
-            } else {
-                JOptionPane.showMessageDialog(main_frame, "Invalid employee username/password!");
+                    main_frame.validate();
+                } else {
+                    JOptionPane.showMessageDialog(main_frame, "Invalid employee username/password!");
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(main_frame, "Unable to log in!");
             }
         } catch (SQLException | NullPointerException ex) {
             JOptionPane.showMessageDialog(main_frame, "Unable to log in: " + ex);
